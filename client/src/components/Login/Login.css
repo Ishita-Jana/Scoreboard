@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* 
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'poppins';
+    background: radial-gradient(circle, #832de2, #4a00e0); 
+} */
+
+.login-container{
+    width: 300px;
+    height:500px ;
+    padding: 20px;
+    justify-content: center;
+    background-color: aliceblue;
+    border-radius: 15px;
+    /* border: 2px solid red; */
+    box-shadow: 0 0 10px rgba( 0,0,0,0.5);
+
+}
+
+.login-head{
+    /* border: 2px solid red; */
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px 20px 10px;
+    
+
+}
+
+.login-head .dash{
+    width: 90%;
+    height: 2px;
+    border-radius: 30px;
+    background: linear-gradient(90deg,#4a00e0, #3f87a6, #7a84c6, #ca76d2);
+    /* border: 1px solid #4a00e0; */
+    
+}
+
+.role-head{
+    font-weight: bolder;
+    font-family: 'poppins';
+    font-size: 30px;
+    /* border: 2px solid green; */
+
+    
+    
+}
+
+
+ .user-box{
+    position: relative;
+    margin-top: 20px;
+    /* border: 2px solid green; */
+
+}
+
+.user-box input{
+    width: 100%;
+    padding: 10px 0;
+    color: #555;
+    background: transparent;
+    font-size: 16px;
+    margin-bottom: 30px;
+    border: none;
+    outline: none;
+    font-family: 'poppins';
+    border-bottom: 2px solid #ccc;
+
+}
+ .user-box input:focus{
+    border-bottom:2px solid indigo;
+
+}
+.user-box label{
+    position: absolute;
+    top: 10px;
+    left: 0; 
+    font-size: 16px;
+    color: #555;
+    pointer-events: none;
+    transition: all .5s ease;
+}
+
+ .user-box input:focus ~ label,
+ .user-box input:valid ~ label{
+    top: -15px;
+    left: 0;
+    color: indigo;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+ span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid red; */
+
+}
+
+span label{
+    padding: 5px 50px;
+    font-size: 18px;
+    background-color: indigo;
+    color: #ccc;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    /* border: 2px solid black; */
+}
+
+span label:hover{
+    opacity: .9;
+}
+
+
+

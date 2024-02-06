@@ -1,0 +1,101 @@
+@keyframes details{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity:0.5;
+    }
+    100%{
+        opacity:1;
+    }
+}
+
+
+.details-enter{
+    animation: details 3s ease-in-out;
+}
+
+.progress-container{
+    /* padding: 10px 0; */
+    background-color: rgba(191, 207, 226, 0.3);
+    padding: 0px 10px;
+    margin: 10px 0;
+    /* border: 2px solid #a1bed6; */
+    border-radius: 10px;
+    
+ 
+}
+
+.progress-bar-div{
+    width: 60%;
+}
+
+.score-details{
+    display: flex;
+    height: 50px;
+    font-family: 'Quicksand', sans-serif;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* border: 2px solid red; */
+}
+
+
+.teamDetails{
+    display: flex;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 900;
+    justify-content: space-between;
+
+}
+
+.nameStyle{
+    font-size: 2vw;
+    color: aliceblue;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.rankStyle{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    /* margin-right: 10px; */
+    font-family: 'Quicksand', sans-serif;
+    background-color: aliceblue;
+}
+.rank{
+    text-align: center;
+    font-size: 2vw;
+}
+
+.score-style{
+    font-size: 1.5vw;
+    color: #a1bed6;
+    font-weight: 500;
+    /* font-family: 'Quicksand', sans-serif; */
+}
+
+@media (min-width:800px) {
+    .nameStyle{
+        font-size: 1.5vw;
+        color: aliceblue;
+    }
+    .rankStyle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2vw;
+        height: 2vw;
+
+    }
+    .scoreStyle{
+        font-size: 1.5vw;
+    }
+    .rank{
+        padding: 2px;
+        /* border: 2px solid red; */
+        font-size: 1.5vw;
+    }
+}
+

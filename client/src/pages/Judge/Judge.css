@@ -1,0 +1,85 @@
+.judge{
+    position: relative;
+    /* overflow: scroll; */
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    overflow: auto;
+    align-items: center;
+    background: radial-gradient(circle, rgb(120, 189, 130) 0%,rgb(75, 180, 183) 0%, rgb(15, 104, 104) 80%);
+}
+
+.title-judge{
+    /* border: 2px solid red; */
+    width: 100%;
+    background-color: #93cc63;
+    
+}
+
+.judge-current-round{
+    /* border: 2px solid black; */
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    margin: 30px 0px 0px 0px;
+}
+
+.content{
+    /* border: 2px solid brown; */
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.content input{
+    /* border: 2px solid black; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    text-align: center;
+    width: 30%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content label{
+    margin-right: 20px;
+}
+
+.content div div{
+    margin-bottom: 20px;
+    /* border: 2px solid red; */
+    width: 100%;
+    
+}
+
+/* Judge.css */
+
+.modal-judge {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(236, 228, 228);
+    padding: 20px;
+    /* border: 5px solid #1958a5; */
+    z-index: 9999; /* Use a higher z-index value */
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    z-index: 9998; /* Ensure the overlay is just below the modal */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .hide-close-button {
+    display: none;
+  }
+  
+

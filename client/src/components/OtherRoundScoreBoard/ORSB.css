@@ -1,0 +1,21 @@
+/* .teams-page-container{
+    display: grid;
+    
+} */
+
+.list{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+
+.TeamsNew{
+    width: 100%;
+}
+
+.list-final{
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

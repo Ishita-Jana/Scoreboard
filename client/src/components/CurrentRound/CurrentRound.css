@@ -1,0 +1,69 @@
+
+
+.round-name{
+    color: rgb(199, 220, 237);
+    width: 100%;
+    text-align: center;
+    font-size: 3vw;
+    font-family: "Raleway", sans-serif;
+    margin-top: 20px;
+}
+
+/* 
+
+
+
+.roundName{
+    
+   
+    border-radius: 7px;
+
+    margin: 10px 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    font-size: 3vw;
+    
+    text-align: center;
+    background-color: #fff;
+    background-image: linear-gradient(90deg, #23627d, #99dad7, #084371);
+    background-size: 400%;
+    animation: animate 5s linear infinite;
+}
+.roundName:before{
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    height: calc(100% + 4px);
+    width: calc(100% + 4px);
+    background: linear-gradient(90deg, #000, #fff, #000);
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+}
+.roundName:after{
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    height: calc(100% + 4px);
+    width: calc(100% + 4px);
+    background: linear-gradient(90deg, #000, #fff, #000);
+    background-size: 400%;
+    z-index: -2;
+    filter: blur(20px);
+}
+@keyframes animate{
+    0%{
+        background-position: 0 0;
+    }
+    50%{
+        background-position: 100% 0;
+    }
+    100%{
+        background-position: 0 0;
+    }
+}
+
+    */

@@ -1,0 +1,29 @@
+@keyframes progressBarAnimation{
+    0%{
+        width: 0;
+    }
+    100%{
+        width:100%;
+    }
+}
+@keyframes progressBarScore{
+    0%{
+        width: 0;
+        opacity:0;
+    }
+    50%{
+        opacity: 0.4;
+    }
+    100%{
+        opacity:1;
+    }
+}
+
+.ProgressBar-enter {
+    /* border: 2px solid white; */
+    /* width: 100%; */
+    animation: progressBarAnimation 1s ease-in-out;
+  }
+.ProgressBar-score{
+    animation: progressBarScore 2s ease-in-out;
+}

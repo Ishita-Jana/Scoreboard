@@ -1,0 +1,35 @@
+.leaderboardHead{
+    margin-top: 0px;
+    width: 100%;
+    text-align: center;
+    font-size: 2vw;
+    color: aliceblue;
+    padding: 30px 0;
+    margin-bottom: 20px;
+    /* border: 2px solid orange; */
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 900;
+    
+}
+
+.leaderboardContainer{
+    padding: 0 5% 7% 5%;
+    /* border: 2px solid red; */
+    z-index: 5;
+    margin: 0 5vw;
+    /* background: linear-gradient(#2657a0, #102663); */
+    
+     background: transparent;
+}
+
+.teams-score{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.teams-score .first14, .teams-score .remaining{
+    /* border: 2px solid white; */
+    width: 45%;
+}
+
