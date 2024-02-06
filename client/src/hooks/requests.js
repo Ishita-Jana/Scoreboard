@@ -3,7 +3,7 @@ import {dummyRealPairData} from "../testData/dummy.js";
 import { getEachRoundData } from "../utilities.js";
 
 
-const API_URL = "";
+const API_URL = "http://localhost:8000";
 
 
 
@@ -56,12 +56,11 @@ async function httpSubmitPrelimData(prelimData){
 }
 
 async function httpGetPrelimData(judges){
-    //TODO
-    
-    
+    const prelimData = await fetch(`${API_URL}/prelimsAllData`)
+    const data = await prelimData.json();
     return {
         judgeNumber: judges,
-        prelimData: getDummyPredata()
+        prelimData: data
     
     };
     

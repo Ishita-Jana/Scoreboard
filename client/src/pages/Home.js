@@ -4,6 +4,7 @@ import Header from "../components/Header/Header.js"
 import Leaderboard from "../components/Leaderboard/Leaderboard.js"
 import ORSB from "../components/OtherRoundScoreBoard/ORSB.js"
 import './style.css'
+
 const Home = (props)=>{
     
     const {currentRound,judgeNumber,prelimData,currRoundPairs,pairMatchesData,getPairMatchesData,getCurrPairMatchesData} = props;
@@ -83,6 +84,7 @@ const Home = (props)=>{
                     </div>
                 
                 
+              
 
         </div>
     )
