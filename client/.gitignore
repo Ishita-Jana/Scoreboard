@@ -11,7 +11,7 @@
 # production
 /build
 
-/src/testData/
+/src/testData
 
 # misc
 .DS_Store
