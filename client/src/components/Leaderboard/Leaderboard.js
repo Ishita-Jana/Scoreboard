@@ -18,8 +18,6 @@ useEffect(()=>{
       const sortedScoreData = scores.slice().sort((a, b) => (b.Total - a.Total));
       setSortedData(sortedScoreData);
     }
-    console.log(scores);
-    console.log(judgeNumber);
 
    
    
