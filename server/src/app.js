@@ -3,7 +3,6 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const api = require('./routes/api_v1');
 const { httpGetAllPrelimsData } = require('./routes/prelims/prelims.controller');
 const { loadPrelimsData } = require('./models/model/prelims.model');
 const prelimsRouter = require('./routes/prelims/prelims.router');
