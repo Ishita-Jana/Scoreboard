@@ -43,16 +43,28 @@ async function httpSetAdminSettings(data){
 
 
 async function httpSubmitPrelimData(prelimData){
-    //TODO
-    console.log(prelimData);
-
-    // if (judgeScore.length == judgeNumber){
-    //     calculate average and Speaker1 and speaker2 total
-    // }
     
-    return {
-        ok: true
+    const response = await fetch(`${API_URL}/prelims`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(prelimData)
+    });
+    // console.log(response);
+    if(response.ok){
+        return {
+            ok: true
+        }
     }
+    else{
+        return {
+            ok: false
+        }
+    
+    }
+    
+    
 }
 
 async function httpGetPrelimData(judges){

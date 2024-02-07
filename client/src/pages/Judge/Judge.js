@@ -76,8 +76,10 @@ const Judge = (props) => {
         round: currentRound,
         teamCode: formattedTeamCode,
         courtRoom: formattedCourtRoom,
-        judgeScore: {
+        judgeNumber: judgeNumber,
+        jScore: {
           judgeName: judgeName,
+          date : new Date(),
           scores: teamScore,
         },
       }

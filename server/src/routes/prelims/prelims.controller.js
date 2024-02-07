@@ -1,6 +1,6 @@
 const prelims = require('../../models/model/prelims.model');
 
-const {loadPrelimsData} = require('../../models/model/prelims.model');
+const {loadPrelimsData,addPrelimScore} = require('../../models/model/prelims.model');
 
 async function httpGetAllPrelimsData(req,res) {
     const prelimsData = await loadPrelimsData(req,res);
@@ -8,8 +8,8 @@ async function httpGetAllPrelimsData(req,res) {
 }
 
 async function httpAddScore(req, res) {
-    const { teamCode, judgeName, scores } = req.body;
-    const response = await addScore(teamCode, judgeName, scores);
+    const data = req.body;
+    const response = await addPrelimScore(data);
     return res.status(200).json(response);
 }
 

@@ -7,7 +7,7 @@ const {httpUpdateScore} = require('./prelims.controller');
 
 
 prelimsRouter.get('/prelimsAllData',httpGetAllPrelimsData);
-prelimsRouter.post('/prelims/:round',httpAddScore);
+prelimsRouter.post('/prelims',httpAddScore);
 prelimsRouter.put('/prelims/:id',httpUpdateScore);
    
 
