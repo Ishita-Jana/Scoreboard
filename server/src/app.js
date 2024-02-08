@@ -11,13 +11,10 @@ const app = express();
 
 
 app.use(express.json());
-app.use(cors(
-    {
-        origin: 'https://sunny-sable-0e2fad.netlify.app',
-        credentials: true,
-        allowedHeaders: 'Content-Type'
-    }
-));
+var whitelist = ['http://localhost:3000/', 'https://xim-mcc.netlify.app/']
+app.use(cors({
+    origin: '*'
+}));
 
 app.use('/',prelimsRouter);
 app.use('/',adminRouter);
