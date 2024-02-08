@@ -3,8 +3,8 @@ import {dummyRealPairData} from "../testData/dummy.js";
 import { getEachRoundData } from "../utilities.js";
 
 
-// const API_URL = "https://mcc-scoreboard.onrender.com";
-const API_URL = "http://localhost:8000";
+const API_URL = "https://mcc-scoreboard.onrender.com";
+// const API_URL = "http://localhost:8000";
 
 
 
