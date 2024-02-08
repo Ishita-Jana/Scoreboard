@@ -6,6 +6,7 @@ import ScoreInput from '../../components/ScoreInput/ScoreInput.js';
 
 import Modal from 'react-modal' // Import the Modal component
 import "./Judge.css"
+import useModal from '../../components/Modal/useModal.js';
 
 const rounds = [
   'Preliminary Round',
@@ -22,11 +23,8 @@ const Judge = (props) => {
   const [courtRoom, setCourtRoom] = useState('');
   const [judgeName, setJudgeName] = useState('');
   const [teamDetails, setTeamDetails] = useState(null);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState('');
-  const [data,setData] = useState();
-  const [hideButton,setHideButton] = useState(false);
-  const navigate = useNavigate();
+  const { modalIsOpen, openModal, closeModal, modalMessage, hideButton, setModal } = useModal();
+
   
   
 
@@ -85,7 +83,9 @@ const Judge = (props) => {
       }
       
       console.log(data);
-      if(currentRound === 0){
+      console.log(currentRound);
+
+      if(currentRound == 0){
         // console.log("submitting prelim data",data);
         const response = submitPrelimData(data);
         console.log(response);
@@ -104,35 +104,8 @@ const Judge = (props) => {
 
   //-----handle modal message--------
 
-  const setModal = ()=>{
-    //get submit
-    setModalMessage('Data successfully uploaded.');
-    setModalIsOpen(true);
-    setHideButton(true);
-  
-    // Close the modal after 2 seconds
-    setTimeout(() => {
-      setModalIsOpen(false);
-      setHideButton(false);
-    }, 2000);
-    
-    // Refresh the page after a delay or redirect to another page
-    setTimeout(() => {
-      console.log('Reloading the page...');
-      // window.location.reload(); // Uncomment this line if you want to refresh the page
-      // navigate('/some-other-route'); // Uncomment this line if you want to redirect to another route
-    }, 2500);
-  }
+ 
 
-  const openModal = (message) => {
-    setModalMessage(message);
-    setModalIsOpen(true);
-  }
-
-  const closeModal = () => {
-    console.log('Closing the modal...');
-    setModalIsOpen(false);
-  }
 
 
 

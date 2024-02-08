@@ -6,7 +6,7 @@ const adminSchema = new mongoose.Schema({
     required: true,
   },
   data: {
-    type: mongoose.Schema.Types.Mixed,
+    type: Object,
     required: true,
   },
 });

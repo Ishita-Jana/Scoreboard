@@ -8,7 +8,7 @@ const useData = () => {
 
 
 
-    const AdminLogin= useCallback(async (username, password) => {
+    const adminLogin= useCallback(async (username, password) => {
         const response = await httpAdminLogin(username, password);
         if(response.ok){
             return {
@@ -18,7 +18,7 @@ const useData = () => {
         }
     },[]);
 
-    const JudgeLogin = useCallback(async (username, password) => { 
+    const judgeLogin = useCallback(async (username, password) => { 
         const response = await httpJudgeLogin(username, password);
         if(response.ok){
             return {
@@ -28,7 +28,7 @@ const useData = () => {
         }
     },[]);
 
-    const JudgeRegister = useCallback(async (username, password) => {
+    const judgeRegister = useCallback(async (username, password) => {
         const response = await httpJudgeRegister(username, password);
         if(response.ok){
             return {
@@ -63,7 +63,7 @@ const useData = () => {
     const setCurrentAdminSettings = useCallback(async (data) => {
         const response = await httpSetAdminSettings(data);
         if(response.ok){
-           getCurrentAdminSettings();
+          await getCurrentAdminSettings();
            return {
                 ok: true,
                 message: "Settings Updated"
@@ -100,9 +100,9 @@ const useData = () => {
     currentRound,
     judgeNumber,
     allData,
-    AdminLogin,
-    JudgeLogin,
-    JudgeRegister,
+    adminLogin,
+    judgeLogin,
+    judgeRegister,
     getAllData,
     setCurrentAdminSettings,
     getCurrentAdminSettings,
