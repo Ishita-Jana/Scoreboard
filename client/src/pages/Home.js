@@ -19,6 +19,10 @@ const Home = (props)=>{
     // console.log(judgeNumber);
     // console.log(prelimData);
      
+
+    useEffect(()=>{
+        console.log(currentRound,judgeNumber,getPrelimdata,prelimData,getPrelimAverage);
+    },[currentRound,judgeNumber,getPrelimdata,prelimData,getPrelimAverage])
     
     useEffect(()=>{
 
@@ -32,6 +36,8 @@ const Home = (props)=>{
           const filtered = getAverageScore(prelimData.prelimData,roundNo.judgeNumber);
           console.log(filtered);
           setData(filtered);
+          const testData = await getPrelimAverage();
+          console.log(testData);
         }
 
         fetchData();

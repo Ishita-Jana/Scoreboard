@@ -65,6 +65,15 @@ const getTotalScore = (scores) => {
     }
 }
 
+function filterPrelimData(data){
+  const requiredData = []
+  data.map((team)=>{
+    if(team.judgeScore.length == 2){
+      requiredData.push(team);
+    }
+  })
+  return requiredData;
+}
 
 function getAverageScore(data,judgeNumber) {
   const totalScores = {};
@@ -123,6 +132,7 @@ export {
     groupPairData,
     getEachRoundData,
     getTotalScore,
-    getAverageScore
+    getAverageScore,
+    filterPrelimData,
 
 }

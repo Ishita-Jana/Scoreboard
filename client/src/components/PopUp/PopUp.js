@@ -32,7 +32,10 @@ const PopUp = (props) => {
     }, timer+500);
   }
 
-  
+  const openModal = (message) => {
+    setModalMessage(message);
+    setModalIsOpen(true);
+  }
 
   const closeModal = () => {
     setModalIsOpen(false);
