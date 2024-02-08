@@ -23,7 +23,7 @@ const AppLayout = () => {
 
 const {currentRound,judgeNumber,adminLogin,judgeLogin,judgeRegister,getCurrentAdminSettings,setCurrentAdminSettings, getAllData,allData,} = useData();
 const {currRoundPairs,pairMatchesData,getPairMatchesData,submitPairMatchesData,getCurrPairMatchesData} = usePairMatchesData();
-const {prelimData,getPrelimdata,getPrelimAverage,submitPrelimData} = usePrelimsData();
+const {prelimData,getPrelimdata,getPrelimAverage,submitPrelimData,getAllPrelimdata} = usePrelimsData();
 
 
   return (
@@ -42,6 +42,7 @@ const {prelimData,getPrelimdata,getPrelimAverage,submitPrelimData} = usePrelimsD
         prelimData={prelimData}
         pairMatchesData={pairMatchesData} 
         getPrelimdata={getPrelimdata} 
+        getAllPrelimdata={getAllPrelimdata}
         getPairMatchesData={getPairMatchesData} />} />
         <Route path="/judge/home" element={<Judge currentRound={currentRound} judgeNumber={judgeNumber} submitPairMatchesData={submitPairMatchesData} submitPrelimData={submitPrelimData}  />} />
       </Routes>

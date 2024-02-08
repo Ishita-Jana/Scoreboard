@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Teams.css'
-import { getTotalScore } from '../../utilities';
+import { getAverageScore } from '../../utilities';
 const TeamsNew = (props) => {
 
   const {courtRoom,details,judgeNumber} = props;
@@ -14,7 +14,7 @@ const TeamsNew = (props) => {
     const teams = []
       teamsScore.map((key)=>{
         if(key.judgeScore && key.judgeScore.length == judgeNumber){
-            const teamData = getTotalScore(key.judgeScore);
+            const teamData = getAverageScore(key.judgeScore);
             // console.log(teamData);
             const Average = ((teamData.Speaker1 + teamData.Speaker2)/(2*judgeNumber)).toFixed(2);
             const details = {

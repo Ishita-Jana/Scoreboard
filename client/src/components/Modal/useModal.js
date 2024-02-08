@@ -30,7 +30,7 @@ const useModal = () => {
       // Refresh the page after a delay or redirect to another page
       setTimeout(() => {
         console.log('Reloading the page...');
-        // window.location.reload(); // Uncomment this line if you want to refresh the page
+        window.location.reload(); // Uncomment this line if you want to refresh the page
         // navigate('/some-other-route'); // Uncomment this line if you want to redirect to another route
       }, 2500);
     }

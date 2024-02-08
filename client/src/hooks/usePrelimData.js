@@ -8,7 +8,18 @@ const usePrelimData = () => {
     const [prelimData, setPrelimData] = useState([]);
  
 
-
+    const getAllPrelimdata = useCallback(async () => {
+      const fetchPrelimData = await httpGetPrelimData();
+      const adminSettings = await httpGetAdminSettings();
+      const judgeNumber = adminSettings.judgeNumber;
+      const data = fetchPrelimData.prelimData;
+      return {
+        prelimData: data,
+        judgeNumber: judgeNumber
+      }
+     
+      
+  },[]);
 
     const getPrelimdata = useCallback(async () => {
         const fetchPrelimData = await httpGetPrelimData();
@@ -76,7 +87,8 @@ const usePrelimData = () => {
         getPrelimdata,
         updatePrelimData,
         submitPrelimData,
-        getPrelimAverage
+        getPrelimAverage,
+        getAllPrelimdata
       }
 }
 export default usePrelimData
