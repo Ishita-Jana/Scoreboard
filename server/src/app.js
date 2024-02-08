@@ -13,8 +13,9 @@ const app = express();
 app.use(express.json());
 app.use(cors(
     {
-        origin: 'http://localhost:3000',
-        credentials: true
+        origin: 'https://sunny-sable-0e2fad.netlify.app',
+        credentials: true,
+        allowedHeaders: 'Content-Type'
     }
 ));
 
