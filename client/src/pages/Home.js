@@ -4,82 +4,67 @@ import Header from "../components/Header/Header.js"
 import Leaderboard from "../components/Leaderboard/Leaderboard.js"
 import ORSB from "../components/OtherRoundScoreBoard/ORSB.js"
 import './style.css'
+import { httpGetAdminSettings } from "../hooks/requests.js"
+import { httpGetPrelimData } from "../hooks/requests.js"
+import { getAverageScore } from "../utilities.js"
+
 
 const Home = (props)=>{
     
-    const {currentRound,judgeNumber,prelimData,currRoundPairs,pairMatchesData,getPairMatchesData,getCurrPairMatchesData} = props;
-    const [scores,setScores] = useState();
-    const [hasTotal,setHasTotal] = useState(false);
-    console.log(judgeNumber);
+    const {currentRound,judgeNumber,prelimData,currRoundPairs,pairMatchesData,getPairMatchesData,getCurrPairMatchesData,getPrelimdata, getPrelimAverage} = props;
+    const [data, setData] = useState();
+    const [round, setRound] = useState();
+    const [judge, setJudge] = useState();
+    // console.log(currentRound);
+    // console.log(judgeNumber);
+    // console.log(prelimData);
+     
     
     useEffect(()=>{
 
-        
-        
-        console.log(judgeNumber)
-        if (currentRound === 0 && prelimData && judgeNumber!=null && judgeNumber !== 0) {
-            setScores(prelimData);
-          }
-      
-          if (currentRound!= null && currentRound !== 0 && judgeNumber!=null && judgeNumber !== 0) {
-            console.log(currentRound,judgeNumber);   
-            const data = getCurrPairMatchesData(currentRound,judgeNumber);
-          }
-    
-    },[currentRound,prelimData,judgeNumber,pairMatchesData])
-
-    
-
-   
-
-    useEffect(()=>{
-        setScores(currRoundPairs);
-    },[currRoundPairs])
-
-    
-    useEffect(()=>{
-        console.log("scores",scores);
-        if(currentRound == 0 && scores){
-            const hasdata = scores.length;
-            console.log(scores.length);
+        const fetchData = async ()=>{
+          const roundNo =  await httpGetAdminSettings();
+          console.log(roundNo);
+          setRound(roundNo.round);
+          setJudge(roundNo.judgeNumber);
+          const prelimData = await httpGetPrelimData();
+          console.log(prelimData.prelimData);
+          const filtered = getAverageScore(prelimData.prelimData,roundNo.judgeNumber);
+          console.log(filtered);
+          setData(filtered);
         }
-        
-        // const hasTotal = Array.isArray(scores) && scores.length > 0 && scores.some(team => 'Total' in team);
-        // if(hasTotal){
-        //     setHasTotal(true);
-        // }
-    },[scores])
+
+        fetchData();
+    },[])
     
-
-   
-
     return (
         <div>
             <Header />
             <video src="video/bg.mp4" autoPlay muted loop />
             <div className="overlay"></div>
             <div className="home-container">
-                
+              
                     <CurrentRoundHeader round={currentRound}/>
                     {
-                    ((currentRound != null)  && (currentRound === 0) && scores && (scores.length > 0) && (judgeNumber!=null) && (judgeNumber!=0)) ? 
+                        round==0 && data ? 
                         <div>
-                            <Leaderboard scores={scores} judgeNumber={judgeNumber}/>
-                        </div> 
-                        
-                        : 
-                        
-                        <div>
-                        {
-                            ((currentRound != null) && currentRound != 0 && scores && judgeNumber) ?
+                            
+                        <Leaderboard scores={data} judgeNumber={judge}/>
+                        </div> : "Loading..."}
+
+
+
+
+                        {/* {
+                            (currentRound != 0  && pairMatchesData.length != 0) ?
 
                             <div> 
                             
-                            <ORSB scores={scores} judgeNumber={judgeNumber} currentRound={currentRound} />
-                            </div> : "Loading..."
-                        }
-                        </div>
-                    }
+                            <ORSB scores={pairMatchesData} judgeNumber={judgeNumber} currentRound={currentRound} />
+                            </div> : "Score not available"
+                        } */}
+                       
+                    
                     
                     </div>
                 

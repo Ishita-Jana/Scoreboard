@@ -27,16 +27,36 @@ async function httpJudgeRegister({username, password}){
 }
 
 async function httpGetAdminSettings(){
-    //get the currnt round from admin
+    const response = await fetch(`${API_URL}/adminSettings`);
+    const data = await response.json();
+    console.log(data);
     
     return {
-        round: 0,
-        judgeNumber: 2
+        round: data.round,
+        judgeNumber: data.judgeNumber
     }
+
 }
 
 async function httpSetAdminSettings(data){
-    //set the currnt round and judge number from admin
+    const response = await fetch(`${API_URL}/adminSettings`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    if(response.ok){
+        return {
+            ok: true
+        }
+    }
+    else{
+        return {
+            ok: false
+        }
+    
+    }
     
 }
 
@@ -67,13 +87,11 @@ async function httpSubmitPrelimData(prelimData){
     
 }
 
-async function httpGetPrelimData(judges){
+async function httpGetPrelimData(){
     const prelimData = await fetch(`${API_URL}/prelimsAllData`)
     const data = await prelimData.json();
     return {
-        judgeNumber: judges,
-        prelimData: data
-    
+        prelimData: data   
     };
     
     

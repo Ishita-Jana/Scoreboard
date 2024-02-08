@@ -13,7 +13,6 @@ import JudgeLogin from './Judge/JudgeLogin'
 import Judge from './Judge/Judge'
 
 import useData from '../hooks/useData'
-import useUserData from '../hooks/useUserData'
 import usePairMatchesData from '../hooks/usePairMatchesData'
 import usePrelimsData from '../hooks/usePrelimData'
 import JudgeRegister from './Judge/JudgeRegister';
@@ -22,17 +21,17 @@ import JudgeRegister from './Judge/JudgeRegister';
 
 const AppLayout = () => {
 
-const {currentRound,judgeNumber,AdminLogin,JudgeLogin,JudgeRegister,getCurrentAdminSettings,setCurrentAdminSettings, getAllData,allData,} = useData();
+const {currentRound,judgeNumber,adminLogin,judgeLogin,judgeRegister,getCurrentAdminSettings,setCurrentAdminSettings, getAllData,allData,} = useData();
 const {currRoundPairs,pairMatchesData,getPairMatchesData,submitPairMatchesData,getCurrPairMatchesData} = usePairMatchesData();
-const {prelimData,getPrelimdata,submitPrelimData} = usePrelimsData();
+const {prelimData,getPrelimdata,getPrelimAverage,submitPrelimData} = usePrelimsData();
 
 
   return (
     <Routes>
-        <Route path="/" element={<Home currentRound={currentRound} judgeNumber={judgeNumber} prelimData={prelimData} currRoundPairs={currRoundPairs} pairMatchesData={pairMatchesData} getPairMatchesData={getPairMatchesData} getCurrPairMatchesData={getCurrPairMatchesData}  />} />
-        <Route path="/login/admin" element={<AdminLogin AdminLogin={AdminLogin} />} />
-        <Route path="/login/judge" element={<JudgeLogin JudgeLogin={JudgeLogin}  />} />
-        <Route path="/register/judge" element={<JudgeRegister JudgeRegister={JudgeRegister} />} />
+        <Route path="/" element={<Home currentRound={currentRound} judgeNumber={judgeNumber} prelimData={prelimData} currRoundPairs={currRoundPairs} pairMatchesData={pairMatchesData} getPairMatchesData={getPairMatchesData} getCurrPairMatchesData={getCurrPairMatchesData} getPrelimdata={getPrelimdata} getPrelimAverage={getPrelimAverage}  />} />
+        <Route path="/login/admin" element={<AdminLogin AdminLogin={adminLogin} />} />
+        <Route path="/login/judge" element={<JudgeLogin JudgeLogin={judgeLogin}  />} />
+        <Route path="/register/judge" element={<JudgeRegister JudgeRegister={judgeRegister} />} />
         <Route path="/admin/home" element={<Admin 
         currentRound={currentRound} 
         judgeNumber={judgeNumber}

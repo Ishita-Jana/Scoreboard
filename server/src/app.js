@@ -6,6 +6,7 @@ const path = require('path');
 const { httpGetAllPrelimsData } = require('./routes/prelims/prelims.controller');
 const { loadPrelimsData } = require('./models/model/prelims.model');
 const prelimsRouter = require('./routes/prelims/prelims.router');
+const adminRouter = require('./routes/admin/admin.router');
 const app = express();
 
 
@@ -18,6 +19,7 @@ app.use(cors(
 ));
 
 app.use('/',prelimsRouter);
+app.use('/',adminRouter);
 // app.use('/prelimsData', prelimsRouter);
 app.use('/', (req, res) => {
     res.send('Welcome to the server');

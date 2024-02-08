@@ -2,8 +2,8 @@ const prelims = require('../../models/model/prelims.model');
 
 const {loadPrelimsData,addPrelimScore} = require('../../models/model/prelims.model');
 
-async function httpGetAllPrelimsData(req,res) {
-    const prelimsData = await loadPrelimsData(req,res);
+async function httpGetAllPrelimsData(req, res) {
+    const prelimsData = await loadPrelimsData();
     return res.status(200).json(prelimsData);
 }
 

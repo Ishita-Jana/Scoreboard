@@ -26,12 +26,7 @@ const usePairMatchesData = () => {
     const submitPairMatchesData = useCallback(async (data)=> {
       console.log(data);
       const response = await httpSubmitPairMatchesData(data);
-      if(response.ok){
-        getPairMatchesData();
-      }
-      else{
-        console.log(response)
-      }
+      console.log("inside pair matches");
       
     },[])
 

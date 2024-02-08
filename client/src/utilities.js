@@ -1,8 +1,6 @@
 import React from 'react'
 
-const findAverage = (team) => {
 
-}
 
 const groupPairData = (data) => {
     
@@ -67,9 +65,64 @@ const getTotalScore = (scores) => {
     }
 }
 
+
+function getAverageScore(data,judgeNumber) {
+  const totalScores = {};
+
+  // Iterate through each entry in the data
+  data.forEach(entry => {
+    const teamCode = entry.teamCode;
+
+    // Initialize team if not present in totalScores
+    if (!totalScores[teamCode]) {
+      totalScores[teamCode] = {
+        Speaker1: 0,
+        Speaker2: 0
+      };
+    }
+
+    if(entry.judgeScore.length == judgeNumber){
+      entry.judgeScore.forEach(judge => {
+        const scores = judge.scores;
+  
+        // Sum up scores for Speaker1 and Speaker2
+        Object.keys(scores).forEach(criterion => {
+          totalScores[teamCode].Speaker1 += parseFloat(scores[criterion].Speaker1);
+          totalScores[teamCode].Speaker2 += parseFloat(scores[criterion].Speaker2);
+        });
+      });
+    }
+   
+   
+  });
+
+  // Round the scores to 2 decimal places
+  Object.keys(totalScores).forEach(teamCode => {
+    totalScores[teamCode].Speaker1 = totalScores[teamCode].Speaker1.toFixed(2);
+    totalScores[teamCode].Speaker2 = totalScores[teamCode].Speaker2.toFixed(2);
+  });
+
+  // Transform the result into the desired format
+  const result = Object.keys(totalScores).map(teamCode => ({
+    teamCode: teamCode,
+    Speaker1: totalScores[teamCode].Speaker1,
+    Speaker2: totalScores[teamCode].Speaker2,
+    Total: (parseFloat(totalScores[teamCode].Speaker1) + parseFloat(totalScores[teamCode].Speaker2)).toFixed(2)
+  }));
+
+  return result;
+}
+ 
+  
+  
+  
+
+
 export {
-    findAverage,
+  
     groupPairData,
     getEachRoundData,
-    getTotalScore
+    getTotalScore,
+    getAverageScore
+
 }
