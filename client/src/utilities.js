@@ -3,7 +3,18 @@ import React from 'react'
 
 
 const groupPairData = (data) => {
-    
+  const groupedData = data.reduce((acc, obj) => {
+    const { courtRoom, ...rest } = obj;
+    if (!acc[courtRoom]) {
+        acc[courtRoom] = [rest];
+    } else {
+        acc[courtRoom].push(rest);
+    }
+    return acc;
+}, {});
+const resultArray = Object.keys(groupedData).map(courtRoom => ({ [courtRoom]: groupedData[courtRoom] }));
+
+  console.log(resultArray);  
 }
 
 const getEachRoundData =(data,roundNumber)=>{
@@ -77,14 +88,16 @@ function filterPrelimData(data){
 
 function getAverageScore(data,judgeNumber) {
   const totalScores = {};
-
+  // console.log(data,"data in getAverageScore", judgeNumber,"judgeNumber in getAverageScore");
   // Iterate through each entry in the data
   data.forEach(entry => {
     const teamCode = entry.teamCode;
+    // console.log(entry.courtRoom)
 
     // Initialize team if not present in totalScores
     if (!totalScores[teamCode]) {
       totalScores[teamCode] = {
+        courtRoom: entry.courtRoom,
         Speaker1: 0,
         Speaker2: 0
       };
@@ -107,6 +120,7 @@ function getAverageScore(data,judgeNumber) {
 
   // Round the scores to 2 decimal places
   Object.keys(totalScores).forEach(teamCode => {
+    totalScores[teamCode].courtRoom = totalScores[teamCode].courtRoom;
     totalScores[teamCode].Speaker1 = totalScores[teamCode].Speaker1.toFixed(2);
     totalScores[teamCode].Speaker2 = totalScores[teamCode].Speaker2.toFixed(2);
   });
@@ -114,11 +128,13 @@ function getAverageScore(data,judgeNumber) {
   // Transform the result into the desired format
   const result = Object.keys(totalScores).map(teamCode => ({
     teamCode: teamCode,
+    courtRoom: totalScores[teamCode].courtRoom,
     Speaker1: totalScores[teamCode].Speaker1,
     Speaker2: totalScores[teamCode].Speaker2,
-    Total: (parseFloat(totalScores[teamCode].Speaker1) + parseFloat(totalScores[teamCode].Speaker2)).toFixed(2)
+    Total: ((parseFloat(totalScores[teamCode].Speaker1) + parseFloat(totalScores[teamCode].Speaker2))/(judgeNumber*2)).toFixed(2)
   }));
 
+  // console.log(result,"result in getAverageScore");
   return result;
 }
  
