@@ -12,7 +12,7 @@ const bodyParser = require('body-parser');
 
 app.use(express.json());
 app.use(cors({
-    origin: '*'
+    origin: 'https://xim-mcc.netlify.app'
 }));
 
 app.use(session({
