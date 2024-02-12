@@ -1,23 +1,50 @@
-import {addPrelimData, getDummyPredata} from "../testData/dummy.js";  
-import {dummyRealPairData} from "../testData/dummy.js";  
 import { getEachRoundData } from "../utilities.js";
 
 
-const API_URL = "https://mcc-scoreboard.onrender.com";
-// const API_URL = "http://localhost:8000";
+// const API_URL = "https://mcc-scoreboard.onrender.com";
+const API_URL = "http://localhost:8000";
 
 
 
 async function httpAdminLogin({username, password}){
-    //TODO
-    //validate admin login details and redirect to admin page
+    const response = await fetch(`${API_URL}/adminLogin`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({username, password})
+    });
+    const data = await response.json();
+    return {
+        token: data.token,
+        judgeNumber: data.judgeNumber
+    }
     
 }
 
+async function httpLogin(data){
+    console.log(data);
+    const response = await fetch(`${API_URL}/login`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    const res = await response.json();
+    console.log(res);
+    return res;
+
+}
 
 async function httpJudgeLogin({username, password}){
-    //TODO
-    //validate operator login details and redirect to operator page
+    const response = await fetch(`${API_URL}/judgeLogin`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({username, password})
+    });
    
 }
 
@@ -30,7 +57,7 @@ async function httpJudgeRegister({username, password}){
 async function httpGetAdminSettings(){
     const response = await fetch(`${API_URL}/adminSettings`);
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     
     return {
         round: data.round,
@@ -103,23 +130,31 @@ async function httpUpdatePrelimData(data){
     //update TeamCode with the average score and speaker1 and speaker2
 }
 async function httpGetPairMatchesData(){
-    //TODO
-   return dummyRealPairData;
+    const pairMatchesData = await fetch(`${API_URL}/pairMatches`)
+    const data = await pairMatchesData.json();
+    return {
+        pairMatchesData: data   
+    };
 
 }
 
-async function httpGetPairMatches(round,judgeNumber){
-    //TODO
-   // Filter objects with the specified round
-//    const fetchedData = API_URL;
-    
-    const fetchedData = dummyRealPairData;
-    const filteredData = getEachRoundData(fetchedData,round);
-    return filteredData;
-  
-
-
-    
+async function httpGetCurrPairMatches(){
+    const currR = await httpGetAdminSettings();
+    const round = {round: currR.round}
+    console.log(round,currR);
+    const response = await fetch(`${API_URL}/pairMatchesCurr`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(round)
+    });
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
+    return {
+        currRoundPairs: data
+    }
 
 }
 
@@ -142,7 +177,8 @@ export {
     httpSubmitPrelimData,
     httpUpdatePrelimData,
     httpGetPairMatchesData,
-    httpGetPairMatches,
+    httpGetCurrPairMatches,
     httpSubmitPairMatchesData,
+    httpLogin
    
 };

@@ -46,8 +46,7 @@ const ScoreTable = (props) => {
                           </tr>
                         )
                       })
-                     }
-                       
+                     }  
                     </tbody>
                 </table> : ""}
                 

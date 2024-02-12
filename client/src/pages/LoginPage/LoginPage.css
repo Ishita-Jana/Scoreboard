@@ -1,0 +1,21 @@
+.login-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'poppins';
+    object-fit: cover;
+    background: radial-gradient(circle, #0B1126, #0B1126);
+    /* background: url('../../../public/img/login-bg.png'); */
+
+}
+
+.login-page-container{
+    width: 70%;
+    height: 100vh;
+    background-image: url('../../../public/img/login-bg.png');
+    background-size: contain; /* Adjust the background size to contain */
+    background-repeat: no-repeat; /* Prevent the background from repeating */
+    background-position: center; /* Center the background image */
+    border: 2px solid red;
+}

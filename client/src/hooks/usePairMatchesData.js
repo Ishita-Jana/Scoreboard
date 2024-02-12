@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import {
-    httpGetPairMatches,
+   httpGetCurrPairMatches,
     httpGetPairMatchesData,
     httpSubmitPairMatchesData
 } from "./requests";
@@ -27,14 +27,16 @@ const usePairMatchesData = () => {
       console.log(data);
       const response = await httpSubmitPairMatchesData(data);
       console.log("inside pair matches");
+      console.log(response);
+      return ;
       
     },[])
 
 
-    const getCurrPairMatchesData = useCallback(async (roundNumber,judgeNumber)=> {
+    const getCurrPairMatchesData = useCallback(async (round,judgeNumber)=> {
      
-      const data = await httpGetPairMatches(roundNumber,judgeNumber);
-      setCurrRoundPairs(data);
+      const data = await httpGetCurrPairMatches();
+      setCurrRoundPairs(data.currRoundPairs);
       return data;
   },[])
 

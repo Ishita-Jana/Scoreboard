@@ -8,7 +8,7 @@ const IndividualScore = (props) => {
     <div  className='progress-container'>
         <div className='details-enter score-details'>
             <div  className='rankStyle'><div className='rank'>{props.rank}</div></div>
-            <div  className='nameStyle'>{props.teamName}</div>
+            {/* <div  className='nameStyle'>{props.teamName}</div> */}
             <div className='progress-bar-div'><Progressbar
                 bgcolor= "#3B837A"
                 progress= {props.score}

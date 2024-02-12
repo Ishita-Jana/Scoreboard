@@ -19,3 +19,14 @@
     justify-content: center;
     align-items: center;
 }
+
+.pair-mat {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjust as needed */
+  }
+  
+  .pair-row {
+    width: calc(50% - 10px); /* Adjust width as needed */
+    margin-bottom: 20px; /* Adjust margin as needed */
+  }

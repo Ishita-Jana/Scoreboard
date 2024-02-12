@@ -15,7 +15,7 @@ async function addPrelimScore(data) {
 
     try {
         const { teamCode, round,jScore,courtRoom,judgeNumber} = data;
-        console.log(data,"inside addPrelimScore")
+        // console.log(data,"inside addPrelimScore")
         const prelimData = await prelims.findOne({teamCode:teamCode});
         if(prelimData){
             if(prelimData.judgeScore.length < judgeNumber){

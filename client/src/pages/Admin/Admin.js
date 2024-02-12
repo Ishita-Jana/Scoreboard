@@ -1,13 +1,27 @@
 import React, { useEffect, useState ,useRef} from 'react'
 import { useReactToPrint } from 'react-to-print';
+import { useNavigate } from 'react-router-dom';
 
 import TitleBar from '../../components/TitleBar/TitleBar.js'
 import Modal from 'react-modal';
 import useModal from '../../components/Modal/useModal.js';
-import {JudgeScoreTable} from '../../components/JudgeScoreTable/JudgeScoreTable.js';
-import PrelimsScoreTable from '../../components/PrelimsScoreTable/PrelimsScoreTable.js';
-import { filterPrelimData } from '../../utilities.js';
+import {PrelimsScoreBoard} from '../../components/PrelimsScoreBoard/PrelimsScoreBoard.js';
+import { filterPrelimData, getSpeakerTotal, getTotalScore, groupjudgeData } from '../../utilities.js';
+import './Admin.css';
+import { JudgeScoreTable } from '../../components/JudgeScoreTable/JudgeScoreTable.js';
 
+const categories = [
+  "Appreciation and application of facts",
+  "Application of legal principles",
+  "Use of authorities and precedents",
+  "Presentation skills",
+  "Clarity of thoughts and structure of arguments",
+  "Poise and demeanour",
+  "Court Mannerism",
+  "Strategy & Time Management",
+  "Knowledge of laws",
+  "Response to Forum questions",
+];
 
 const Admin = (props) => {
 
@@ -16,6 +30,7 @@ const Admin = (props) => {
   const [prelimshow, setPrelimshow] = useState(false);
   const [judgeshow, setJudgeshow] = useState(false);
   const [scores, setScores] = useState();
+  const [judgeScore, setJudgeScore] = useState();
   const [data, setData] = useState({
     role: 'admin',
     round: '0',
@@ -23,7 +38,7 @@ const Admin = (props) => {
   });
   const judgeRef = useRef();
   const prelimRef = useRef();
-
+  const navigate = useNavigate();
 
   const handleAllData = () => {
     setPrelimshow(!prelimshow);
@@ -35,6 +50,8 @@ const Admin = (props) => {
     setPrelimshow(false);
   }
 
+  
+
   const handleChange = (e) => {
     console.log(e.target);
     const { name, value } = e.target;
@@ -43,9 +60,9 @@ const Admin = (props) => {
       ...data,
       [name]:value, 
     }); 
-
-    console.log(data);
   }
+
+
 
   const handleSubmit = () => {
 
@@ -54,17 +71,24 @@ const Admin = (props) => {
       return;
     }
 
+    console.log(data);
     setCurrentAdminSettings(data);
     setModal();
 
   }
 
+  const handleNavigate=()=>{
+    navigate('/top')
+  }
+
+
+  
   const handleJudgePrint = useReactToPrint({content: () => judgeRef.current,});
   const handlePrelimPrint = useReactToPrint({content: () => prelimRef.current,});
   
 
   useEffect(()=>{
-    console.log(prelimData, pairMatchesData);
+    // console.log(prelimData, pairMatchesData);
     getAllData();
     getCurrentAdminSettings();
 
@@ -75,9 +99,11 @@ const Admin = (props) => {
   useEffect(()=>{
     const fetchData = async ()=>{
       const data = await getAllPrelimdata();
-      console.log(data);
       const filtered = filterPrelimData(data.prelimData);
       setScores(filtered);
+      const judge = groupjudgeData(data.prelimData);
+      setJudgeScore(judge);
+
     }
 
   fetchData();
@@ -85,36 +111,65 @@ const Admin = (props) => {
 
   return (
     <div className='admin-page-container-style'>
-      <TitleBar title="Admin"/>
+      <TitleBar title="Admin" />
       <div className='admin-input'>
+        <div className='inputs-admin'>
           <div className='round-input'>
-            <select name='round' onChange={handleChange} value={data.round}>
-                <option value="0">Prelimis</option>
-                <option value="1">Elimination</option>
-                <option value="2">Semi-Final</option>
-                <option value="3">Final</option>
-            </select>
-          </div>
-          <div className='judge-input'>
-            <label>Enter Judge Number</label>
-            <input  type="number" name='judgeNumber' value={data.judgeNumber} onChange={handleChange}  />
-          </div>
-          <div><button onClick={handleSubmit}>Submit</button></div>
+              <select name='round' onChange={handleChange} value={data.round}>
+                  <option value="0">Prelimis</option>
+                  <option value="1">Quarters</option>
+                  <option value="2">Semi-Final</option>
+                  <option value="3">Final</option>
+              </select>
+            </div>
+            <div className='judge-input'>
+              <label>Enter Judge Number</label>
+              <input  type="number" name='judgeNumber' value={data.judgeNumber} onChange={handleChange}  />
+            </div>
+            <div><button onClick={handleSubmit} className='admin-submit'>Submit</button></div>
+        </div>
+                   
+          <div className='top8-button'><button onClick={handleNavigate}>Show top 8 teams</button></div>
       </div>
       
-      <div>
+      <div className='show-categories'>
+        <div className='cat-head'>Categories</div>
+        <div className='categories-board'>
+           <div>
+           
+              { categories.slice(0,5).map((cat,index)=>{
+              return <p className='cat' key={index}>{`C${index+1}:  `}{cat}</p>
+            }) } 
+           </div>
+           
+              <div className='cat-details'>
+              { categories.slice(5,10).map((cat,index)=>{
+              return <p className='cat' key={index}>{`C${index+1}:  `}{cat}</p>
+            }) } 
+            </div>
+        </div>
+        
+        <div className='categories-board'>
+            
+            
+          
+          
+        </div>
+      </div>
+      <div className='admin-btns'>
         <button onClick={handleAllData}>{`${prelimshow ? "Hide":"Show Prelim Score"}`}</button>
         <button onClick={handleJudgeData}>{`${judgeshow ? "Hide":"Show Judge Score"}`}</button>
       </div>
       
       <div>
+        
         <div className={`${prelimshow ? "":"dont-show"} prelim-score` }  >
         <div ><button onClick={handlePrelimPrint}>Print</button></div>
-          <JudgeScoreTable scores={scores} ref={prelimRef}/>
+          <PrelimsScoreBoard scores={scores} ref={prelimRef}/>
         </div>
         <div className={`${judgeshow ? "":"dont-show"}  judge-score`} >
-        <div ><button onClick={handleJudgePrint}>hello</button></div>
-          hello{judgeshow}
+        <div ><button onClick={handleJudgePrint}>Print</button></div>
+          <JudgeScoreTable ref={judgeRef} scores={judgeScore} />
         </div>
       </div>
 

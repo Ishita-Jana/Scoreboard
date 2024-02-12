@@ -26,7 +26,6 @@ const usePrelimData = () => {
         const adminSettings = await httpGetAdminSettings();
         const judgeNumber = adminSettings.judgeNumber;
         const data = fetchPrelimData.prelimData;
-        const totalScores = {};
 
         if(data){
           const requiredData = getAverageScore(data,judgeNumber);

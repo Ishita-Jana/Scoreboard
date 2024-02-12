@@ -6,6 +6,10 @@ const judgeScoreSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    date: {
+        type: Date,
+        required: true
+    },
     scores: {
         type: Object, // You can adjust the type based on your data structure
         required: true
@@ -19,10 +23,6 @@ const judgeScoreSchema = new mongoose.Schema({
 const pairMatchesSchema = new mongoose.Schema({
     teamCode: {
         type: String,
-        required: true
-    },
-    date: {
-        type: Date,
         required: true
     },
     courtRoom: {

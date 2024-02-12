@@ -4,7 +4,7 @@ import TitleBar from '../../components/TitleBar/TitleBar.js';
 import ScoreTable from '../../components/ScoreTable/ScoreTable.js';
 import ScoreInput from '../../components/ScoreInput/ScoreInput.js';
 
-import Modal from 'react-modal' // Import the Modal component
+import Modal from 'react-modal'
 import "./Judge.css"
 import useModal from '../../components/Modal/useModal.js';
 
@@ -128,24 +128,26 @@ const Judge = (props) => {
 
       <div className='judge-current-round'>{roundName}</div>
 
-      <div className='content'>
-        <div>
-          <div>
-            <label>TeamCode:</label>
-            <input value={teamCode} onChange={(e) => setTeamCode(e.target.value)} required/>
+      <div className='content-judge'>
+        <div className='con-i'>
+            <div className='input-j'>
+              <label>Enter Team Code:</label>
+              <input value={teamCode} onChange={(e) => setTeamCode(e.target.value)} required/>
+            </div>
+            <div className='input-j'>
+              <label>Enter Court Room:</label>
+              <input value={courtRoom} onChange={(e) => setCourtRoom(e.target.value)} required />
+            </div>
+            <div className='input-j'>
+              <label>Enter Your Name:</label>
+              <input value={judgeName} onChange={(e) => setJudgeName(e.target.value)} autoComplete='on' required />
+            </div>
+            <div>
+            <button onClick={handleEnterScore} className='sub-score-btn'>Enter Score</button>
           </div>
-          <div>
-            <label>Court Room:</label>
-            <input value={courtRoom} onChange={(e) => setCourtRoom(e.target.value)} required />
           </div>
-          <div>
-            <label>Enter Your Name:</label>
-            <input value={judgeName} onChange={(e) => setJudgeName(e.target.value)} autoComplete='on' required />
-          </div>
-          <div>
-            <button onClick={handleEnterScore}>Enter Score</button>
-          </div>
-        </div>
+          
+       
       </div>
 
 
@@ -163,10 +165,12 @@ const Judge = (props) => {
         </div>
       </Modal>
         
-   
+      <div className= {`${teamDetails?"act-input-con":""}`}>
       {teamDetails &&(
-        <ScoreInput teamDetails={teamDetails} handleSubmit={handleSubmit}  />
+        <ScoreInput  teamDetails={teamDetails} handleSubmit={handleSubmit}  />
       )}
+      </div>
+      
       
     </div>
   );

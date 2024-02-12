@@ -104,6 +104,7 @@
     width: 40px;
 }
 
+
 .teams-details .v{
     font-size: 2.5rem;
     /* border: 2px solid white; */
@@ -127,13 +128,14 @@
 .team-red{
    border: 2px solid red;
    box-shadow: 1px 2px 12px white ;
+   background: linear-gradient(180deg, rgba(213, 36, 54, 0.80) 0%, rgba(213, 36, 54, 0.40) 100%);
 }
 
 .team-red::before{
     content: '';
     position: absolute;
     border-radius: inherit;
-    background-image: linear-gradient(45deg, rgb(145, 197, 164), rgb(33, 22, 150), rgb(116, 92, 77));
+    /* background-image: linear-gradient(45deg, rgb(145, 197, 164), rgb(33, 22, 150), rgb(116, 92, 77)); */
     /* animation: rotation 50s linear infinite;
     inset: 0; */
      z-index: 7;
@@ -143,13 +145,15 @@
 .team-blue{
    border: 3px solid rgb(67, 157, 227);
    box-shadow: 1px 2px 12px white ;
+   background: linear-gradient(180deg, rgba(33, 49, 166, 0.80) 0%, rgba(33, 49, 166, 0.40) 100%)
    
 }
 
 .common-style-team{
     width: 100%;
+    font-size: 2rem;
     /* border: 5px solid red; */
-    color: #070404;
+    color: #e8e0e0;
 }
 
 
@@ -164,20 +168,36 @@
 }
 
  .winner{
-    background: linear-gradient(45deg, #43e04090, #2a902890, #6a986990 ) ;
+    /* background: linear-gradient(45deg, #43e04090, #2a902890, #6a986990 ) ; */
 }
 
 .not-winner{
-    background: linear-gradient(45deg,#928f8f,#d4e6e946,#928f8f);
+    /* background: linear-gradient(45deg,#928f8f,#d4e6e946,#928f8f); */
 
 } 
 
 .winner{
-    /* border: 2px solid green; */
-    background-color: #070404;
+    border: 2px solid green;
+    background: linear-gradient(45deg, #5a8d5a,#2b632b,#5a8d5a);
+    animation: win 5s ease  ;
+   
+    
+}
+
+@keyframes win{
+    0%{
+        background: linear-gradient(45deg, #585032,#838230,#a1b65e);
+    }
+    50%{
+        background: linear-gradient(45deg, #3a5832,#4f8432,#6ca253);
+    }
+    100%{
+        background: linear-gradient(45deg, #5a8d5a,#2b632b,#5a8d5a);
+    }
 }
 
 .pair{
+    margin-top: 30px ;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -186,82 +206,7 @@
 
 .court-room-number{
     color: aliceblue;
+    font-size: 30px;
+    font-family: 'Lato';
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #111;
-  } */
-
-  .pair-card {
-    display: flex;
-    gap: 20px;
-  }
-
-  .tube {
-    position: relative;
-    width: 3cm;
-    height: 2cm;
-    background-color: #333;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: "";
-  
-  }
-
-  .neon-light {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
-    animation: neonAnimation 1s linear infinite alternate;
-  }
-
-  .neon-text {
-    position: absolute;
-    font-size: 1cm;
-    color: #00ffff;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-    transform: translate(-50%, -50%);
-  }
-
-  .neon-text.left {
-    left: 50%;
-  }
-
-  .neon-text.right {
-    right: 50%;
-  }
-
-  @keyframes neonAnimation {
-    from {
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
-    }
-    to {
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0);
-    }
-  }

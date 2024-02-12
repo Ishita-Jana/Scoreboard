@@ -7,53 +7,38 @@
     min-height: 100vh; 
     overflow: auto;
     align-items: center;
-    background: radial-gradient(circle, rgb(120, 189, 130) 0%,rgb(75, 180, 183) 0%, rgb(15, 104, 104) 80%);
+    background-color: #F7F7F7;
 }
 
-.title-judge{
-    /* border: 2px solid red; */
-    width: 100%;
-    background-color: #93cc63;
-    
-}
+
 
 .judge-current-round{
     /* border: 2px solid black; */
-    width: 100%;
+    width: 50%;
     text-align: center;
+    background-color: #ffffff;
     font-size: 2rem;
+    padding: 10px;
+    box-shadow: 0px 3.290045738220215px 3.290045738220215px rgba(0, 0, 0, 0.25);
     margin: 30px 0px 0px 0px;
+    color: #62586B;
+    border-radius: 20px;
 }
 
-.content{
+.content-judge{
     /* border: 2px solid brown; */
     width: 100%;
     text-align: center;
-    height: 100%;
+    /* height: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.content input{
-    /* border: 2px solid black; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    text-align: center;
-    width: 30%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* border: 2px solid #62586B; */
+    /* background-color: #ffffff; */
+    margin-top: 20px;
 }
 
-.content label{
-    margin-right: 20px;
-}
-
-.content div div{
-    margin-bottom: 20px;
-    /* border: 2px solid red; */
-    width: 100%;
-    
-}
 
 /* Judge.css */
 
@@ -81,5 +66,61 @@
   .hide-close-button {
     display: none;
   }
+ 
+
+
   
+  .con-i{
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid rebeccapurple; */
+  }
+
+  .input-j{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+.input-j label{
+    font-family: 'Lato';
+    font-size: 1.0rem;
+    font-weight: 600;
+    color: #62586B;
+}
+.input-j input{
+    width: 50%;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid #fcfcfc;
+    box-shadow: 0px 3.290045738220215px 3.290045738220215px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    font-family: 'Lato';
+    font-weight: 600;
+
+}
+
+.sub-score-btn{
+    background-color: #0830A6;
+    color: #F4F3F3;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+.act-input-con{
+    margin-top: 30px;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0px 3.290045738220215px 3.290045738220215px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    border: none;
+}
+    
+  
+
 

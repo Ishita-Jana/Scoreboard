@@ -1,0 +1,14 @@
+.prelims-score-table{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+
+.prelims-score-table th, td{
+    padding: 5px 20px;
+}
+.cat-table{
+    padding: 10px 20px;
+}

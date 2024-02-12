@@ -39,8 +39,8 @@ useEffect(()=>{
             return(
               data.Total ? 
                 <div key={index} >
-                  
-                    <IndividualScore  rank={index+1} teamName={data.teamCode}  score={(data.Total/(2*judgeNumber)).toFixed(2)}/>
+               
+                    <IndividualScore  rank={index+1} teamName={data.teamCode}  score={(data.Total)}/>
                 </div> : ""
             )
         })}

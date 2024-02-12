@@ -1,0 +1,19 @@
+.judge-score-table{
+    display: flex;
+    width: fit-content;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* border: 5px solid #0a5a90; */
+}
+
+.judge-score-table > div{
+    margin: 30px 0px;
+}
+
+.judge-table th, tr, td{
+    text-align: center;
+}
+
+.total-score-table{
+    background-color: aquamarine;
+}

@@ -106,20 +106,18 @@ const ScoreInput = ({teamDetails, handleSubmit}) => {
             <table>
                 <thead className='table-heading'>
                 <tr>
-                    <th>Categories</th>
-                    <th>Speaker1</th>
-                    <th>Speaker2</th> 
+                    <th className='head-j'>Categories</th>
+                    <th className='head-j'>Speaker1</th>
+                    <th className='head-j'>Speaker2</th> 
                 </tr>
                 </thead>
-
-                <tbody>
-            {shortCat.map((cat, index) => (
+                <tbody className='cat-score-judge'>
+                 {shortCat.map((cat, index) => (
               <tr key={cat}>
                 <td className='category-box'>{`${index + 1}. ${categories[index]}`}</td>
                 <td
                   key={`${cat}-Speaker1`}
-                  className={`${validationErrors[cat]?.Speaker1 ? 'error' : ''} score-input-container`}
-                >
+                  className={`${validationErrors[cat]?.Speaker1 ? 'error' : ''} score-input-container`}>
                   <input
                     type="number"
                     ref={(el) => (inputRefs.current[cat] = { ...inputRefs.current[cat], Speaker1: el })}
@@ -143,8 +141,6 @@ const ScoreInput = ({teamDetails, handleSubmit}) => {
             </table>
         </div>
         <div className='score-input-submit'> <button onClick={handleData}>Submit</button></div>
-       
-     
     </div>
   );
 };

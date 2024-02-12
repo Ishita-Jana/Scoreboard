@@ -6,9 +6,12 @@ const adminSchema = new mongoose.Schema({
     required: true,
   },
   data: {
-    type: Object,
-    required: true,
+    type: mongoose.Schema.Types.Mixed,
+    
   },
+  roles:{
+    type: mongoose.Schema.Types.Mixed,
+  }
 });
 
 const Admin = mongoose.model('Admin', adminSchema);

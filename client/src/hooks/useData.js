@@ -1,5 +1,5 @@
 import React, { useEffect,useState,useCallback } from 'react'
-import { httpGetAllData, httpGetAdminSettings,httpGetPrelimData,httpSetAdminSettings,httpGetPairMatchesData,httpAdminLogin,httpJudgeLogin,httpJudgeRegister } from './requests'
+import { httpGetAllData, httpGetAdminSettings,httpGetPrelimData,httpSetAdminSettings,httpGetPairMatchesData,httpAdminLogin,httpJudgeLogin,httpJudgeRegister,httpLogin } from './requests'
 
 const useData = () => {
     const [currentRound, setCurrentRound] = useState();
@@ -12,6 +12,7 @@ const useData = () => {
         const response = await httpAdminLogin(username, password);
         if(response.ok){
             return {
+                token: response.token,
                 ok: true,
                 message: "Admin Login Successful"
             }
@@ -40,7 +41,18 @@ const useData = () => {
 
 
    
-
+    const loginUser = useCallback(async (data) => {
+        console.log("inside login")
+        const response = await httpLogin(data);
+        if(response.ok){
+            return {
+                role : response.role,
+                token: response.token,
+                ok: true,
+                message: "Login Successful"
+            }
+        }
+    })
 
 
     const getCurrentAdminSettings = useCallback(async () => {
@@ -100,6 +112,7 @@ const useData = () => {
     currentRound,
     judgeNumber,
     allData,
+    loginUser,
     adminLogin,
     judgeLogin,
     judgeRegister,
