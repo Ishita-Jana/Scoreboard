@@ -46,7 +46,7 @@ const usePrelimData = () => {
 
 
     const submitPrelimData = useCallback(async(data)=>{
-        console.log(data,"submitting prelim data")
+        // console.log(data,"submitting prelim data")
         const response = await httpSubmitPrelimData(data);
         if(response.ok){
             getPrelimdata();

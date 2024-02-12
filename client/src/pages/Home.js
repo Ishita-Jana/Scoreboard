@@ -33,13 +33,13 @@ const Home = (props)=>{
     const fetchPairMatches = async (judge,round)=>{
         const currRoundPairs = await getCurrPairMatchesData();
         if(judge){
-            console.log(judge)
+            // console.log(judge)
             const filter = getAverageScore(currRoundPairs.currRoundPairs,judge);
             const pairs =  groupPairData(filter);
-            console.log(filter,"filter");   
+            // console.log(filter,"filter");   
             setData(pairs);
-            console.log(currRoundPairs.currRoundPairs,"currRoundPairs");
-            console.log(pairs,"pairs")
+            // console.log(currRoundPairs.currRoundPairs,"currRoundPairs");
+            // console.log(pairs,"pairs")
             
         }
        
@@ -47,7 +47,7 @@ const Home = (props)=>{
 
 
     useEffect(()=>{
-        console.log(data,"data");   
+        // console.log(data,"data");   
     },[data])   
     
     

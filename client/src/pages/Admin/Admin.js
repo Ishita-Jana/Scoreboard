@@ -53,9 +53,9 @@ const Admin = (props) => {
   
 
   const handleChange = (e) => {
-    console.log(e.target);
+    // console.log(e.target);
     const { name, value } = e.target;
-    console.log(name, value);
+    // console.log(name, value);
     setData({
       ...data,
       [name]:value, 
@@ -71,7 +71,7 @@ const Admin = (props) => {
       return;
     }
 
-    console.log(data);
+    // console.log(data);
     setCurrentAdminSettings(data);
     setModal();
 

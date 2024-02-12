@@ -38,7 +38,7 @@ const ScoreInput = ({teamDetails, handleSubmit}) => {
   const handleScoreChange = (category,speaker, value) => {
 
     if(value <= 10){
-      console.log(value, " ",category, " ", speaker )
+      // console.log(value, " ",category, " ", speaker )
       setScores(prevScores => ({
         
         ...prevScores,
@@ -95,7 +95,7 @@ const ScoreInput = ({teamDetails, handleSubmit}) => {
 
 
   useEffect(()=>{
-    console.log(scores);
+    // console.log(scores);
   },[scores])
 
   

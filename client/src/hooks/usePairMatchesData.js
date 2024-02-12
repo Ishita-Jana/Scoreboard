@@ -24,10 +24,10 @@ const usePairMatchesData = () => {
 
 
     const submitPairMatchesData = useCallback(async (data)=> {
-      console.log(data);
+      // console.log(data);
       const response = await httpSubmitPairMatchesData(data);
-      console.log("inside pair matches");
-      console.log(response);
+      // console.log("inside pair matches");
+      // console.log(response);
       return ;
       
     },[])

@@ -18,7 +18,7 @@ const Top8 = (props) => {
     }, []);
 
     return (
-        <div className={`card-con ${isVisible ? 'show' : ''}`}>
+        <div  className={`card-con ${isVisible ? 'show' : ''}`}>
             <div className={`card ${isVisible ? 'show' : ''}`}>
                 <div className={`card-img ${isVisible ? 'show' : ''}`}>
                     <img src="img/rect.svg" alt="" />

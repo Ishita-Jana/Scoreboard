@@ -11,7 +11,7 @@ const Leaderboard = (props) => {
 
 
 useEffect(()=>{
-  console.log(scores);
+  // console.log(scores);
   if(scores){
     const hasTotal = scores.some(team => 'Total' in team);
     if(hasTotal){

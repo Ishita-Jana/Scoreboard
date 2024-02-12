@@ -23,7 +23,7 @@ async function httpAdminLogin({username, password}){
 }
 
 async function httpLogin(data){
-    console.log(data);
+    // console.log(data);
     const response = await fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: {
@@ -32,7 +32,7 @@ async function httpLogin(data){
         body: JSON.stringify(data)
     });
     const res = await response.json();
-    console.log(res);
+    // console.log(res);
     return res;
 
 }
@@ -141,7 +141,7 @@ async function httpGetPairMatchesData(){
 async function httpGetCurrPairMatches(){
     const currR = await httpGetAdminSettings();
     const round = {round: currR.round}
-    console.log(round,currR);
+    // console.log(round,currR);
     const response = await fetch(`${API_URL}/pairMatchesCurr`, {
         method: 'POST',
         headers: {
@@ -149,9 +149,9 @@ async function httpGetCurrPairMatches(){
         },
         body: JSON.stringify(round)
     });
-    console.log(response);
+    // console.log(response);
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return {
         currRoundPairs: data
     }

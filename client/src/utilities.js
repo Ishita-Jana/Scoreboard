@@ -13,8 +13,8 @@ const groupPairData = (data) => {
     return acc;
 }, {});
 const resultArray = Object.keys(groupedData).map(courtRoom => ({ [courtRoom]: groupedData[courtRoom] }));
-  console.log(JSON.stringify(resultArray));
-  console.log(resultArray);
+  // console.log(JSON.stringify(resultArray));
+  // console.log(resultArray);
   return resultArray;  
 }
 
@@ -135,16 +135,16 @@ const getTotalScore = (judgescores) => {
 
 function filterPrelimData(data){
   const requiredData = []
-  console.log(data,"data in filterPrelimData");
+  // console.log(data,"data in filterPrelimData");
   data.map((team)=>{
     if(team.judgeScore.length == 2){
       const speaker = getTotalScore(team.judgeScore);
-      console.log(speaker,"speaker in filterPrelimData");
+      // console.log(speaker,"speaker in filterPrelimData");
       const teamWithSpeakerResult = { ...team, speakerTotal: speaker };
       requiredData.push(teamWithSpeakerResult);
     }
   })
-  console.log(requiredData,"requiredData in filterPrelimData");
+  // console.log(requiredData,"requiredData in filterPrelimData");
   return requiredData;
 }
 

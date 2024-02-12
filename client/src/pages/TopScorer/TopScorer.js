@@ -25,7 +25,7 @@ const TopScorer = (props) => {
 
     useEffect(() => {
         if ( top8 && currentIndex < top8.length) {
-            console.log("current index",currentIndex);
+            // console.log("current index",currentIndex);
             setTeams(prevTeams => [...prevTeams, top8[currentIndex]]);
         }
     }, [currentIndex]);
@@ -40,10 +40,10 @@ const TopScorer = (props) => {
         try {
             const data = async()=>{
                 const resp = await getPrelimdata();
-                console.log("getPrelimdata",resp);
+                // console.log("getPrelimdata",resp);
                 const sortedData = resp.sort((a, b) => parseFloat(b.Total) - parseFloat(a.Total));
                 setTop8(sortedData.slice(0,8));
-                console.log("sortedData",sortedData);
+                // console.log("sortedData",sortedData);
             }
             data();
         } catch (error) {
@@ -69,9 +69,13 @@ const TopScorer = (props) => {
             <video className="video" src="/video/bg.mp4" autoPlay muted loop />
             <div className="overlay"></div>
             <div className='top8-container'>
-                {teams.length >0 && teams.map((team, index) => {
+                {teams.length >0  && teams.map((team, index) => {
                     return (
-                        <Top8 teamCode={team.teamCode}  total={team.Total} />
+                        <React.Fragment key={index}>
+                        {/* {console.log(team)} */}
+                        <Top8 key={index} teamCode={team.teamCode}  total={team.Total} />
+                        </React.Fragment>
+                        
                     );
                 })}
 

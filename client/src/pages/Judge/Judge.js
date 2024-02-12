@@ -82,13 +82,13 @@ const Judge = (props) => {
         },
       }
       
-      console.log(data);
-      console.log(currentRound);
+      // console.log(data);
+      // console.log(currentRound);
 
       if(currentRound == 0){
         // console.log("submitting prelim data",data);
         const response = submitPrelimData(data);
-        console.log(response);
+        // console.log(response);
       }
       if(currentRound !== 0){
         submitPairMatchesData(data);
@@ -159,7 +159,7 @@ const Judge = (props) => {
         overlayClassName="modal-overlay"
       >
         <div className="modal-content">
-          {console.log(modalMessage)}
+          {/* {console.log(modalMessage)} */}
           <p>{modalMessage}</p>
           <button className={`${hideButton ? "hide-close-button" : ""}`} onClick={closeModal}>Close</button>
         </div>

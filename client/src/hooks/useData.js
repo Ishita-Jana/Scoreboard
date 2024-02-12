@@ -42,7 +42,7 @@ const useData = () => {
 
    
     const loginUser = useCallback(async (data) => {
-        console.log("inside login")
+        // console.log("inside login")
         const response = await httpLogin(data);
         if(response.ok){
             return {

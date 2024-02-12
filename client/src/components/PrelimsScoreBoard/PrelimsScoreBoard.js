@@ -8,7 +8,7 @@ export const PrelimsScoreBoard = React.forwardRef((props, ref) => {
     const [data, setData] = useState();
 
     useEffect(()=>{
-        console.log(scores);
+        // console.log(scores);
         setData(scores);
     },[scores])
     
