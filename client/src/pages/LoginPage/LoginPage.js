@@ -2,15 +2,18 @@ import React, { useState } from 'react'
 import Login from '../../components/Login/Login'
 import useAuth from '../../hooks/useAuth';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useModal from '../../components/Modal/useModal.js';
 import './LoginPage.css'
+import Modal from 'react-modal';
 
 const LoginPage = (props) => {
 
 
+    const { modalIsOpen, openModal, closeModal, modalMessage, hideButton, setModal } = useModal();
     const {auth,setAuth} = useAuth();
     const {loginUser} = props;
    
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
     const [loginData, setLoginData] = useState({
         username: '',
         password: '',
@@ -28,13 +31,17 @@ const LoginPage = (props) => {
 
         try {
         if(loginData.username==='' || loginData.password===''){
-            alert('Please fill in all fields');
+            // alert('Please fill in all fields');
+            console.log('Please fill in all fields');
             return;
           }
           // console.log(loginData.username, loginData.password);
         //   console.log(auth);
           const response = await loginUser(loginData);
-          // console.log(response);
+          console.log(response);
+          if(!response){
+            openModal('Username or password not correct');
+          }
           const {role,token,ok,message} = response;
           // console.log(role,token,ok,message);
           setAuth({ role:role, token:token})
@@ -67,17 +74,29 @@ const LoginPage = (props) => {
       return (
        
         <div className='login-page'>
+          <div className='bg-image'>
+            <div className='log-con'>
+              <Login 
+              role={loginData.role} 
+              onInputChange={handleInputChange}
+              onSubmit={onSubmit}
+              username={loginData.username}
+              password={loginData.password} />
+            </div>
           
-          <form action="">
-            <Login 
-            role={loginData.role} 
-            onInputChange={handleInputChange}
-            onSubmit={onSubmit}
-            username={loginData.username}
-            password={loginData.password} />
-          </form>
-          
-          
+          </div>
+          <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        className="modal-judge"
+        overlayClassName="modal-overlay"
+      >
+        <div className="modal-content">
+          {/* {console.log(modalMessage)} */}
+          <p>{modalMessage}</p>
+          <button className={`${hideButton ? "hide-close-button" : ""}`} onClick={closeModal}>Close</button>
+        </div>
+      </Modal>
           
         </div>
         

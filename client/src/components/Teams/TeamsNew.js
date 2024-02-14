@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import Confetti from 'js-confetti'
 import './Teams.css'
 import { getAverageScore } from '../../utilities';
 const TeamsNew = (props) => {
@@ -6,57 +7,60 @@ const TeamsNew = (props) => {
   const {courtRoom,teams} = props;
 
   const [calculatedData, setCalculatedData] = useState();
-  const [winnerTeam, setWinnerTeam] = useState();
- 
-
-  // const destructuringData = (teamsScore) => {
-
-  //   const teams = []
-  //     teamsScore.map((key)=>{
-  //       if(key.judgeScore && key.judgeScore.length == judgeNumber){
-  //           const teamData = getAverageScore(key.judgeScore);
-  //           // console.log(teamData);
-  //           const Average = ((teamData.Speaker1 + teamData.Speaker2)/(2*judgeNumber)).toFixed(2);
-  //           const details = {
-  //             teamCode: key.teamCode,
-  //             average : Average,
-  //           }
-  //           teams.push(details);
-
-            
-  //       }
-  //     })
-
-  //     // console.log(teams);
-  //     if(teams.length == judgeNumber){
-  //       setCalculatedData(teams);
-  //       if(teams[0].average > teams[1].average){
-  //         setWinnerTeam("team1");
-  //       }else{
-  //         setWinnerTeam("team2");
-  //       }
-  //     }
-  // }
-
-  const getWinner =()=>{
-    if(teams[1]){
-      if(teams[0].Total > teams[1].Total){
-        setWinnerTeam("team1");
-      }
-      else{
-        setWinnerTeam("team2");
-      }
-    }
+  const [winnerTeam, setWinnerTeam] = useState("");
+  // const [number, setNumber] = useState("");
+  const winnerRef = useRef();
+  let number;
+  if(courtRoom){
+    number = courtRoom.split("-")[1];
   }
 
-  useEffect(()=>{
+
+  // console.log("winner", winnerTeam);
+  // console.log(teams,"teams in TeamsNew")
  
-    if(teams){
-      getWinner()
-      console.log(teams)
-      console.log(teams[1]);
+  useEffect(() => {
+    const getWinner = () => {
+      if (teams && teams[1] && teams[0].Total > 0 && teams[1].Total > 0) {
+      // console.log(teams,teams[0].Total,teams[1].Total,"teams in getWinner");
+
+        if (teams[0].Total > teams[1].Total) {
+          setWinnerTeam("team1");
+        } else if(teams[0].Total < teams[1].Total) {
+          setWinnerTeam("team2");
+        }
+        else{
+          setWinnerTeam("draw");
+        }
+      }
+    };
+
+    const timer = setTimeout(() => {
+      getWinner();
+    }, 3000); // Delay setting winner class by 2 seconds
+
+    return () => clearTimeout(timer); // Clean up the timer when component unmounts or when teams change
+
+  }, [teams]);
+
+
+  useEffect(() => {
+    // Trigger confetti effect when winner is determined
+    if (winnerTeam === 'team1' || winnerTeam === 'team2') {
+      const confetti = new Confetti();
+      confetti.addConfetti({
+        elementId: winnerRef.current.getElementsByClassName('teams-container')[0],
+        width: 200,
+        height: 200,
+        confettiNumber: 100,
+        confettiColors: ['#ff0000', '#00ff00', '#0000ff'], // Customize confetti colors
+        confettiSize: 0.5, 
+        // emojis: ['🎉', '🎊', '🏅','🏆' ], 
+        emojiSize: 20,
+
+      });
     }
-  },[teams]);
+  }, [winnerTeam]);
 
   
 
@@ -64,9 +68,9 @@ const TeamsNew = (props) => {
     <>
     {teams && teams[1] ? 
       <div className='pair'>
-          <div className='court-room-number'>Court Room :{courtRoom}</div>
+          <div className='court-room-number'>Court Room :{number}</div>
           <div className='teams-container'>
-              <div className={`teams-details team-red team1 ${winnerTeam == "team1" ? "winner" : "not-winner"}`}>
+              <div className={`teams-details team-red team1 ${ winnerTeam == "team1" ? "winner" :""} ${winnerTeam == "team2" ? "not-winner":"" } ${winnerTeam == "draw" ? "draw":"" } `}  ref={winnerRef}>
                 <div className='inside-div'>
                     <div className=' new-card' >
                         {/* <img src='img/group.png' className='team-avatar common-style-team'/> */}
@@ -79,10 +83,12 @@ const TeamsNew = (props) => {
                     </div>
                     <div className={`${winnerTeam == "team1" ? " " : "not-winner-overlay"}`}></div>
                 </div>
-                <span className='v'>V</span>        
+                        
               </div>
-              <div className={`teams-details team-blue team2 ${winnerTeam == "team2" ? "winner" : "not-winner"}`}>
-                <span className='s'>S</span> 
+              <span className='v'>VS</span>
+              
+              <div className={`teams-details team-blue team2 ${ winnerTeam == "team2" ? "winner" :""} ${winnerTeam == "team1" ? "not-winner":"" }  ${winnerTeam == "draw" ? "draw":"" }` } ref={winnerRef}>
+               
                 <div className=' new-card' >
                     {/* <img src='img/group.png' className='team-avatar common-style-team'/> */}
                     <div className='team-name-elim common-style-team'> 

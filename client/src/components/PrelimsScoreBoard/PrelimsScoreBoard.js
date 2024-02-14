@@ -5,19 +5,32 @@ import './PrelimsScore.css';
 export const PrelimsScoreBoard = React.forwardRef((props, ref) => {
     const {scores} = props;
     const categories = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10'];
+    const rounds = [
+        'Preliminary Round',
+        'Quater Finals',
+        'Semi Final',
+        'Final'
+    ]
     const [data, setData] = useState();
+    const [round, setRound] = useState();
+
 
     useEffect(()=>{
         // console.log(scores);
-        setData(scores);
+        if(scores){
+            setData(scores);
+            setRound(scores[0].round);
+        }
+       
+     
     },[scores])
     
     return (
-        <div ref={ref} className='prelims-score-table'>     
-          <table border={1}>
+        <div ref={ref} className='prelims-score-table'>
+            {scores ? <table border={1}>
             <thead>
               <tr key={0}>
-                <th colSpan={24}>Preliminary Round</th>
+                <th colSpan={24}>{rounds[round]}</th>
               </tr>
               <tr key={1}>
                 <th>Teams</th>
@@ -105,7 +118,8 @@ export const PrelimsScoreBoard = React.forwardRef((props, ref) => {
                 )  
             }):""}
         </tbody>
-          </table>
+          </table> : ""}     
+          
         </div>
       );
 })

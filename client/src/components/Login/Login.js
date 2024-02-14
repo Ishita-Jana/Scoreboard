@@ -9,10 +9,16 @@ const Login = (props) => {
         onInputChange(e.target.name, e.target.value);
       };
 
+    
     const handleSubmit=()=>{
         onSubmit();
     }
 
+    document.body.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          handleSubmit();
+        }
+      });
 
 
   return (
@@ -30,7 +36,7 @@ const Login = (props) => {
                 <input type="password"name='password' onChange={handleChange} value={password} autoComplete='off' required />
                 <label htmlFor="">Password</label>
             </div>
-            <span onClick={handleSubmit}>
+            <span onClick={handleSubmit} >
                 {/* <input type="checkbox" id='chk' /> */}
                 <label>Login</label>
             </span>

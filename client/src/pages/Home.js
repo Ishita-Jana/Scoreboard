@@ -75,7 +75,7 @@ const Home = (props)=>{
         }
 
         fetchData();
-        const intervalId = setInterval(fetchData, 100000);
+        const intervalId = setInterval(fetchData, 30000);
 
     // Clean up the interval when the component unmounts
     return () => clearInterval(intervalId);

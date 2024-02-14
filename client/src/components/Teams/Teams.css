@@ -126,7 +126,7 @@
     background-image: linear-gradient(45deg, #070404, #181616, #282a29);
 }
 .team-red{
-   border: 2px solid red;
+   border: 2px solid rgb(243, 240, 240);
    box-shadow: 1px 2px 12px white ;
    background: linear-gradient(180deg, rgba(213, 36, 54, 0.80) 0%, rgba(213, 36, 54, 0.40) 100%);
 }
@@ -167,32 +167,43 @@
     }
 }
 
- .winner{
-    /* background: linear-gradient(45deg, #43e04090, #2a902890, #6a986990 ) ; */
-}
+
 
 .not-winner{
-    /* background: linear-gradient(45deg,#928f8f,#d4e6e946,#928f8f); */
+    background: linear-gradient(45deg,#bab7b7,#d4e6e946,#928f8f);
+    opacity: 0.4;
+
 
 } 
 
 .winner{
     border: 2px solid green;
     background: linear-gradient(45deg, #5a8d5a,#2b632b,#5a8d5a);
-    animation: win 5s ease  ;
+    width: 80%;
+    animation: win 3s ease  ;
    
     
 }
 
-@keyframes win{
-    0%{
-        background: linear-gradient(45deg, #585032,#838230,#a1b65e);
+@keyframes win {
+    0% {
+        background: linear-gradient(45deg, #585032, #838230, #a1b65e);
+        /* transform: scale(0); */
+        width: 60%;
+       
     }
-    50%{
-        background: linear-gradient(45deg, #3a5832,#4f8432,#6ca253);
+   
+    50% {
+        background: linear-gradient(45deg, #3a5832, #4f8432, #6ca253);
+        /* transform: scale(1); */
+        width: 70%;
+        animation-delay: 1s;
     }
-    100%{
-        background: linear-gradient(45deg, #5a8d5a,#2b632b,#5a8d5a);
+    100% {
+        background: linear-gradient(45deg, #5a8d5a, #2b632b, #5a8d5a);
+        /* transform: scale(1); */
+        width: 80%;
+        /* animation-delay: 1s; */
     }
 }
 
@@ -210,3 +221,7 @@
     font-family: 'Lato';
 }
 
+.draw{
+    background-image: linear-gradient(45deg, #2d0e3c, #191a4a, #282a29);
+    opacity: 0.9;
+}

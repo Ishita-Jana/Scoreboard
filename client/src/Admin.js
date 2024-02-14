@@ -6,7 +6,7 @@ import TitleBar from '../../components/TitleBar/TitleBar.js'
 import Modal from 'react-modal';
 import useModal from '../../components/Modal/useModal.js';
 import {PrelimsScoreBoard} from '../../components/PrelimsScoreBoard/PrelimsScoreBoard.js';
-import { filterPrelimData, getSpeakerTotal, getTotalScore, groupjudgeData } from '../../utilities.js';
+import {getSpeakerTotal, getTotalScore, groupjudgeData } from '../../utilities.js';
 import './Admin.css';
 import { JudgeScoreTable } from '../../components/JudgeScoreTable/JudgeScoreTable.js';
 
@@ -25,7 +25,7 @@ const categories = [
 
 const Admin = (props) => {
 
-  const {currentRound, judgeNumber,getAllData, getCurrentAdminSettings,setCurrentAdminSettings, prelimData, pairMatchesData, getPrelimdata, getPairMatchesData,getAllPrelimdata,getCurrPairMatchesData} = props;
+  const {currentRound, judgeNumber,getAllData, getCurrentAdminSettings,setCurrentAdminSettings, prelimData, pairMatchesData, getPrelimdata, getPairMatchesData,getAllPrelimdata} = props;
   const { modalIsOpen, openModal, closeModal, modalMessage, hideButton, setModal } = useModal();
   const [prelimshow, setPrelimshow] = useState(false);
   const [judgeshow, setJudgeshow] = useState(false);
@@ -42,8 +42,6 @@ const Admin = (props) => {
   });
   const judgeRef = useRef();
   const prelimRef = useRef();
-  const quarterRef = useRef();
-  const quarterJRef = useRef();
   const navigate = useNavigate();
 
   const handleAllData = () => {
@@ -105,39 +103,31 @@ const Admin = (props) => {
   
   const handleJudgePrint = useReactToPrint({content: () => judgeRef.current,});
   const handlePrelimPrint = useReactToPrint({content: () => prelimRef.current,});
-  const handleQuarterPrint = useReactToPrint({content: () => quarterRef.current,});
-  const handleQuarterJudgePrint = useReactToPrint({content: () => quarterJRef.current,});
-
   
 
-  // useEffect(()=>{
-  //   // console.log(prelimData, pairMatchesData);
-  //   getAllData();
-  //   getCurrentAdminSettings();
-  //   getPairMatchesData();
-  //   console.log(prelimData, pairMatchesData,"prelimData and pairMatchesData in admin");
+  useEffect(()=>{
+    // console.log(prelimData, pairMatchesData);
+    getAllData();
+    getCurrentAdminSettings();
+    getPairMatchesData();
+    console.log(prelimData, pairMatchesData,"prelimData and pairMatchesData in admin");
 
 
-  // },[prelimData, pairMatchesData, getPrelimdata, getPairMatchesData])
+  },[prelimData, pairMatchesData, getPrelimdata, getPairMatchesData])
   
 
 
   useEffect(()=>{
     const fetchData = async ()=>{
       const data = await getAllPrelimdata();
-      // console.log(data,"data in admin");
-      const filtered = filterPrelimData(data.prelimData);
-      // console.log(filtered,"filtered in admin")
-      const pair = await getCurrPairMatchesData();
-      // console.log(pair,"pair in admin");
-      const filtered2 = filterPrelimData(pair.currRoundPairs);
-      setQuarterScores(filtered2);
-      // console.log(filtered2,"filtered in admin");
+      console.log(data,"data in admin");
+      const filtered = //console.log(data.prelimData);
+      console.log(filtered,"filtered in admin")
+      const pair = await getPairMatchesData();
+      console.log(pair,"pair in admin");
       setScores(filtered);
       const judge = groupjudgeData(data.prelimData);
-      const judge2 = groupjudgeData(pair.currRoundPairs);
       setJudgeScore(judge);
-      setQuarterJudgeScores(judge2);
 
 
     }
@@ -200,30 +190,25 @@ const Admin = (props) => {
       </div>
       
       <div>
+        
         <div className={`${prelimshow ? "":"dont-show"} prelim-score` }  >
         <div ><button onClick={handlePrelimPrint}>Print</button></div>
-          <PrelimsScoreBoard scores={scores} ref={prelimRef} />
+          <PrelimsScoreBoard scores={scores} ref={prelimRef}/>
         </div>
         <div className={`${judgeshow ? "":"dont-show"}  judge-score`} >
         <div ><button onClick={handleJudgePrint}>Print</button></div>
           <JudgeScoreTable ref={judgeRef} scores={judgeScore} />
         </div>
-        {
-          currentRound && currentRound !=0 && 
-          <div className={`${quarterAllshow ? "":"dont-show"} quarter-score` }  >
-          <div ><button onClick={handleQuarterPrint}>Print</button></div>
-            <PrelimsScoreBoard scores={quarterScores} ref={quarterRef} />
-          </div>
-        }
-        {
-          currentRound && currentRound !=0 && 
-          <div className={`${quarterJudgeshow ? "":"dont-show"} quarter-judge-score`} >
-          <div ><button onClick={handleQuarterJudgePrint}>Print</button></div>
-            <JudgeScoreTable ref={quarterJRef} scores={quarterJudgeScore} />
-          </div>
-        }
+        <div className={`${prelimshow ? "":"dont-show"} prelim-score` }  >
+        <div ><button onClick={handlePrelimPrint}>Print</button></div>
+          <PrelimsScoreBoard scores={scores} ref={prelimRef}/>
+        </div>
+        <div className={`${judgeshow ? "":"dont-show"}  judge-score`} >
+        <div ><button onClick={handleJudgePrint}>Print</button></div>
+          <JudgeScoreTable ref={judgeRef} scores={judgeScore} />
+        </div>
+        
       </div>
-      
 
       <Modal
         isOpen={modalIsOpen}

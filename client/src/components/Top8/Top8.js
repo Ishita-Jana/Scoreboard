@@ -3,7 +3,7 @@ import './Top8.css'
 
 const Top8 = (props) => {
     const {teamCode,total}= props;
-    console.log(teamCode,total);
+    // console.log(teamCode,total);
     // 
     const [isVisible, setIsVisible] = useState(false);
 

@@ -9,8 +9,8 @@ async function addPairMatchData(data) {
     try {
         const { teamCode, round,jScore,courtRoom,judgeNumber} = data;
         // console.log(data,"inside addPairScore")
-        const pairMatchesData = await pairMatches.findOne({teamCode:teamCode});
-        console.log(pairMatchesData,"pairMatchesData")
+        const pairMatchesData = await pairMatches.findOne({teamCode:teamCode,round:round,courtRoom:courtRoom});
+        // console.log(pairMatchesData,"pairMatchesData")
         if(pairMatchesData){
             if(pairMatchesData.judgeScore.length < judgeNumber){
                 const result = await pairMatches.updateOne(

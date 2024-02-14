@@ -15,7 +15,8 @@ const usePrelimData = () => {
       const data = fetchPrelimData.prelimData;
       return {
         prelimData: data,
-        judgeNumber: judgeNumber
+        judgeNumber: judgeNumber,
+        currentRound: adminSettings.round
       }
      
       

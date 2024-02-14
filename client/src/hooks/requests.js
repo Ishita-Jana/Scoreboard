@@ -159,9 +159,53 @@ async function httpGetCurrPairMatches(){
 }
 
 async function httpSubmitPairMatchesData(pairMatchData){
-    //TODO
-    //operator submitting each student data
+    const response = await fetch(`${API_URL}/pairMatches`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(pairMatchData)
+    });
+
+    // console.log(response);
+    if(response.ok){
+        return {
+            ok: true
+        }
+    }
+    else{
+        return {
+            ok: false
+        }
+    
+    }
+    
 }
+
+async function httpSendEmail(data){
+    const response = await fetch(`${API_URL}/sendEmail`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+
+    console.log(response);
+    if(response.ok){
+        return {
+            ok: true
+        }
+    }
+    else{
+        return {
+            ok: false
+        }
+    
+    }
+    
+}
+
 
 
 
@@ -179,6 +223,7 @@ export {
     httpGetPairMatchesData,
     httpGetCurrPairMatches,
     httpSubmitPairMatchesData,
-    httpLogin
+    httpLogin,
+    httpSendEmail
    
 };

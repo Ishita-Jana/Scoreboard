@@ -3,6 +3,8 @@
     width: 100%;
     flex-wrap: wrap;
     justify-content: space-around;
+    page-break-before: always;
+    
     
 }
 

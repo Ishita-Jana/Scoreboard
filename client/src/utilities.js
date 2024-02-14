@@ -107,9 +107,6 @@ const getSpeakerTotal =(scores)=>{
 
 
 
-
-
-
 const getTotalScore = (judgescores) => {
     //before sending cjeck whether length is there or not
     let totalSpeaker1 = 0;
@@ -203,7 +200,84 @@ function getAverageScore(data,judgeNumber) {
   return result;
 }
  
-  
+
+const JudgeEmailTable =(judgeName, round, courtRoom, teamCode, scores,total)=>{
+  const rounds = [
+    'Preliminary Round',
+    'Quater Finals',
+    'Semi Final',
+    'Final'
+]
+
+const categories = [
+  "Appreciation and application of facts",
+  "Application of legal principles",
+  "Use of authorities and precedents",
+  "Presentation skills",
+  "Clarity of thoughts and structure of arguments",
+  "Poise and demeanour",
+  "Court Mannerism",
+  "Strategy & Time Management",
+  "Knowledge of laws",
+  "Response to Forum questions",
+];
+  const tableContent = `
+  <div>
+      <table border="1" className="judge-table">
+          <thead>
+              <tr>
+                  <th colSpan="3">${judgeName}</th>
+              </tr>
+              <tr>
+                  <th colSpan='3'>${rounds[round]}</th>
+              </tr>
+              <tr>
+                  <th></th>
+                  <th colSpan="2">Court Room : ${courtRoom}</th>
+              </tr>
+              <tr>
+                  <th>Team Code</th>
+                  <th colSpan='2'>TC-${teamCode}</th>
+              </tr>
+              <tr>
+                  <th>Categories</th>
+                  <th colSpan="2">Marks</th>
+              </tr>
+              <tr>
+                  <th></th>
+                  <th>Speaker1</th>
+                  <th>Speaker2</th>
+              </tr>
+          </thead>
+          <tbody>
+                    ${Object.keys(scores).map((key, index) => {
+                        return `
+                            <tr key="${index}">
+                                <td>${categories[index]}</td>
+                                <td>${scores[key].Speaker1}</td>
+                                <td>${scores[key].Speaker2}</td>
+                            </tr>`;
+                    })
+                    .join('')}
+                    <tr rowSpan='1'>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="total-score-table">
+                        <td>Total</td>
+                        <td>${total.Speaker1}</td>
+                        <td>${total.Speaker2}</td>
+                    </tr>
+                </tbody>
+      </table>
+  </div> 
+`;
+
+// console.log(tableContent);
+return tableContent;
+
+}
   
   
 
@@ -216,5 +290,6 @@ export {
     getAverageScore,
     filterPrelimData,
     getSpeakerTotal,
-    groupjudgeData
+    groupjudgeData,
+    JudgeEmailTable
 }

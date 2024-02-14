@@ -45,7 +45,7 @@ const {prelimData,getPrelimdata,getPrelimAverage,submitPrelimData,getAllPrelimda
 
         {/*---------- private routes------------------*/}
         <Route path='/admin'  element={<PrivateRoute allowedRole={ROLES.admin} />}  >
-              <Route path="dashboard" element={<Admin currentRound={currentRound} judgeNumber={judgeNumber} allData={allData} getAllData={getAllData} getCurrentAdminSettings={getCurrentAdminSettings} setCurrentAdminSettings={setCurrentAdminSettings} prelimData={prelimData} pairMatchesData={pairMatchesData} getPrelimdata={getPrelimdata} getAllPrelimdata={getAllPrelimdata} getPairMatchesData={getPairMatchesData} />} />
+              <Route path="dashboard" element={<Admin currentRound={currentRound} judgeNumber={judgeNumber} allData={allData} getAllData={getAllData} getCurrentAdminSettings={getCurrentAdminSettings} setCurrentAdminSettings={setCurrentAdminSettings} prelimData={prelimData} pairMatchesData={pairMatchesData} getPrelimdata={getPrelimdata} getAllPrelimdata={getAllPrelimdata} getPairMatchesData={getPairMatchesData} getCurrPairMatchesData={getCurrPairMatchesData} />} />
               {/* <Route path="top8" element={<Top8 getPrelimdata={getPrelimdata} />} /> */}
         </Route>
 

@@ -7,12 +7,13 @@ const session = require('express-session');
 const prelimsRouter = require('./routes/prelims/prelims.router');
 const adminRouter = require('./routes/admin/admin.router');
 const pairMatchesRouter = require('./routes/pairMatches/pairMatches.router');
+const emailRouter = require('./services/email');
 const app = express();
 const bodyParser = require('body-parser');
 
 app.use(express.json());
 app.use(cors({
-    origin: 'https://xim-mcc.netlify.app'
+    origin: process.env.BASE_URL,
 }));
 
 app.use(session({
@@ -26,6 +27,7 @@ app.use(bodyParser.json());
 app.use('/',prelimsRouter);
 app.use('/',adminRouter);
 app.use('/',pairMatchesRouter);
+app.use('/',emailRouter);
 
 
 app.use('/', (req, res) => {

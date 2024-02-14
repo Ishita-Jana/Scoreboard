@@ -104,6 +104,11 @@
     font-weight: 600;
 
 }
+.input-j .email-id{
+  font-size: 16px;
+  padding: 0px 12px;
+}
+  
 
 .sub-score-btn{
     background-color: #0830A6;
@@ -120,7 +125,8 @@
     border-radius: 20px;
     border: none;
 }
-    
+
+  
   
 
 
