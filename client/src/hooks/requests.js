@@ -1,8 +1,8 @@
 import { getEachRoundData } from "../utilities.js";
+// require('dotenv').config();
 
-
-// const API_URL = "https://mcc-scoreboard.onrender.com";
-const API_URL = "http://localhost:8000";
+const API_URL = "https://mcc-scoreboard.onrender.com";
+// const API_URL = "http://localhost:8000";
 
 
 
