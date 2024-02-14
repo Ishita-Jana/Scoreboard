@@ -32,13 +32,14 @@ const LoginPage = (props) => {
         try {
         if(loginData.username==='' || loginData.password===''){
             // alert('Please fill in all fields');
+            openModal('Please fill in all fields');
             console.log('Please fill in all fields');
             return;
           }
           // console.log(loginData.username, loginData.password);
         //   console.log(auth);
           const response = await loginUser(loginData);
-          console.log(response);
+          // console.log(response);
           if(!response){
             openModal('Username or password not correct');
           }
