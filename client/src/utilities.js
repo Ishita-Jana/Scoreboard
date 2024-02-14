@@ -1,6 +1,3 @@
-import React from 'react'
-
-
 
 const groupPairData = (data) => {
   const groupedData = data.reduce((acc, obj) => {
@@ -59,7 +56,7 @@ const groupjudgeData = (data) => {
   
     if(data){
     data.forEach(item => {
-      const test = getTotalScore(item.judgeScore);
+      // const test = getTotalScore(item.judgeScore);
       item.judgeScore.forEach(score => {
         const { teamCode, courtRoom, round } = item;
         const { judgeName, scores } = score;
@@ -78,8 +75,10 @@ const groupjudgeData = (data) => {
           total
         });
       });
+     
     });
     }
+
 return groupedData;
 }
 
@@ -140,6 +139,8 @@ function filterPrelimData(data){
       const teamWithSpeakerResult = { ...team, speakerTotal: speaker };
       requiredData.push(teamWithSpeakerResult);
     }
+
+    return requiredData;
   })
   // console.log(requiredData,"requiredData in filterPrelimData");
   return requiredData;
@@ -182,7 +183,6 @@ function getAverageScore(data,judgeNumber) {
 
   // Round the scores to 2 decimal places
   Object.keys(totalScores).forEach(teamCode => {
-    totalScores[teamCode].courtRoom = totalScores[teamCode].courtRoom;
     totalScores[teamCode].Speaker1 = totalScores[teamCode].Speaker1.toFixed(2);
     totalScores[teamCode].Speaker2 = totalScores[teamCode].Speaker2.toFixed(2);
   });

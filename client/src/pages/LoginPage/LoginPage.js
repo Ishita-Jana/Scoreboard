@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Login from '../../components/Login/Login'
 import useAuth from '../../hooks/useAuth';
-import { useLocation, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import useModal from '../../components/Modal/useModal.js';
 import './LoginPage.css'
 import Modal from 'react-modal';
@@ -9,7 +9,7 @@ import Modal from 'react-modal';
 const LoginPage = (props) => {
 
 
-    const { modalIsOpen, openModal, closeModal, modalMessage, hideButton, setModal } = useModal();
+    const { modalIsOpen, openModal, closeModal, modalMessage, hideButton} = useModal();
     const {auth,setAuth} = useAuth();
     const {loginUser} = props;
    
@@ -33,33 +33,36 @@ const LoginPage = (props) => {
         if(loginData.username==='' || loginData.password===''){
             // alert('Please fill in all fields');
             openModal('Please fill in all fields');
-            console.log('Please fill in all fields');
+            // console.log('Please fill in all fields');
             return;
           }
-          // console.log(loginData.username, loginData.password);
+          console.log(loginData.username, loginData.password);
         //   console.log(auth);
           const response = await loginUser(loginData);
           // console.log(response);
           if(!response){
             openModal('Username or password not correct');
           }
-          const {role,token,ok,message} = response;
-          // console.log(role,token,ok,message);
-          setAuth({ role:role, token:token})
-          if (localStorage.getItem('auth')){
-            localStorage.removeItem('auth');
-          }
+          
+          if(response){
+              const {role,token} = response;
+              // console.log(role,token);
+              setAuth({ role:role, token:token})
+              if (localStorage.getItem('auth')){
+                localStorage.removeItem('auth');
+              }
 
-          localStorage.setItem('auth', JSON.stringify({ role:role, token:token}));
-          setLoginData({username:'',password:''});
-        //   console.log(auth);
-        //   console.log(from);
-          if(role ==='admin') {
-            navigate('/admin/dashboard', { replace: true });
+            localStorage.setItem('auth', JSON.stringify({ role:role, token:token}));
+            setLoginData({username:'',password:''});
+              if(role ==='admin') {
+                navigate('/admin/dashboard', { replace: true });
+              }
+              else if(role==='judge') {
+                navigate('/judge/dashboard', { replace: true });
+              }
           }
-          else if(role==='judge') {
-            navigate('/judge/dashboard', { replace: true });
-          }
+          
+          
           else {
             navigate('/login', { replace: true });
           }
@@ -77,12 +80,15 @@ const LoginPage = (props) => {
         <div className='login-page'>
           <div className='bg-image'>
             <div className='log-con'>
+              
               <Login 
-              role={loginData.role} 
+              
               onInputChange={handleInputChange}
               onSubmit={onSubmit}
               username={loginData.username}
               password={loginData.password} />
+              
+              
             </div>
           
           </div>

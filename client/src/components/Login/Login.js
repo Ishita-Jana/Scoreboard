@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './Login.css'
 
 const Login = (props) => {
@@ -10,21 +10,23 @@ const Login = (props) => {
       };
 
     
-    const handleSubmit=()=>{
+    const handleSubmit=(e)=>{
+      e.preventDefault();
         onSubmit();
     }
 
     document.body.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
-          handleSubmit();
+          onSubmit();
         }
       });
 
 
   return (
     <div className='login-container'>
+      <form onSubmit={handleSubmit}>
         <div className='login-head'>
-           <span className='role-head'>{props.role} Login</span>
+           <span className='role-head'>Login</span>
            <p className='dash'></p>
         </div>
         
@@ -38,11 +40,11 @@ const Login = (props) => {
             </div>
             <span onClick={handleSubmit} >
                 {/* <input type="checkbox" id='chk' /> */}
-                <label>Login</label>
+                <button type='submit'>Login</button>
             </span>
 
        
-      
+            </form>
     </div>
   )
 }

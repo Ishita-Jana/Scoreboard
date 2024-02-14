@@ -15,32 +15,32 @@ const JudgeIndividual = (props) => {
         <>
         {scores ?
         <div >
-        <table border={1} className='judge-table'>
+<table border={1} className='judge-table'>
            <thead>
                <tr>
-                   <th></th>
-                   <th colSpan={2}>{judgeName}</th>
+                <th></th>
+                <th colSpan={2}>{judgeName}</th>
                </tr>
                <tr>
-                   <th></th>
-                   <th colSpan={2}>{rounds[round]}</th>
+                <th></th>
+                <th colSpan={2}>{rounds[round]}</th>
                </tr>
                <tr>
-                   <th></th>
-                   <th colSpan={2}>{courtRoom}</th>
+                <th></th>
+                <th colSpan={2}>{courtRoom}</th>
                </tr>
                <tr>
-                   <th></th>
-                   <th colSpan={2}>{teamCode}</th>
+                <th></th>
+                <th colSpan={2}>{teamCode}</th>
                </tr>
                <tr>
-                   <th></th>
-                   <th>Speaker1</th>
-                   <th>Speaker2</th>
+                <th></th>
+                <th>Speaker1</th>
+                <th>Speaker2</th>
                </tr>
                <tr>
-                   <th>Categories</th>
-                   <th colSpan={2}>Marks</th> 
+                <th>Categories</th>
+                <th colSpan={2}>Marks</th> 
                </tr>
            </thead>
            <tbody>
@@ -48,21 +48,20 @@ const JudgeIndividual = (props) => {
                {Object.keys(scores).map((key,index)=>{
                    return (
                        <tr key={index}>
-                           <td>{key}</td>
-                           <td>{scores[key].Speaker1}</td>
-                           <td>{scores[key].Speaker2}</td>
-                       </tr>)
+                        <td>{key}</td>
+                        <td>{scores[key].Speaker1}</td>
+                        <td>{scores[key].Speaker2}</td>
+                </tr>)
                })}
                </React.Fragment>
                <tr className='total-score-table'>
-                   <td>Total</td>
-                   <td>{total.Speaker1}</td>
-                   <td>{total.Speaker2}</td>
+                <td>Total</td>
+                <td>{total.Speaker1}</td>
+                <td>{total.Speaker2}</td>
                </tr>
            </tbody>
          </table>
-     
-   </div> : ""}
+         </div> : ""}
         </>
       );
 }

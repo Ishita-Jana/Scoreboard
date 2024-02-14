@@ -103,28 +103,25 @@ const ScoreInput = ({teamDetails, handleSubmit}) => {
   return (
     <div className="score-table-container">
         <div>
-            <table>
-                <thead className='table-heading'>
+          <table>
+              <thead className='table-heading'>
                 <tr>
-                    <th className='head-j'>Categories</th>
-                    <th className='head-j'>Speaker1</th>
-                    <th className='head-j'>Speaker2</th> 
+                  <th className='head-j'>Categories</th>
+                  <th className='head-j'>Speaker1</th>
+                  <th className='head-j'>Speaker2</th>
                 </tr>
-                </thead>
-                <tbody className='cat-score-judge'>
-                 {shortCat.map((cat, index) => (
+              </thead>
+            <tbody className='cat-score-judge'>
+              {shortCat.map((cat,index)=>(
               <tr key={cat}>
                 <td className='category-box'>{`${index + 1}. ${categories[index]}`}</td>
-                <td
-                  key={`${cat}-Speaker1`}
-                  className={`${validationErrors[cat]?.Speaker1 ? 'error' : ''} score-input-container`}>
+                <td key={`${cat}-Speaker1`} className={`${validationErrors[cat]?.Speaker1 ? 'error' : ''} score-input-container`}>
                   <input
                     type="number"
                     ref={(el) => (inputRefs.current[cat] = { ...inputRefs.current[cat], Speaker1: el })}
                     onChange={(e) => handleScoreChange(cat, 'Speaker1', e.target.value)}
                     value={scores[cat]?.Speaker1}
-                    required
-                  />
+                    required/>
                 </td>
                 <td key={`${cat}-Speaker2`} className={`${validationErrors[cat]?.Speaker2 ? 'error' : ''} score-input-container`}>
                   <input
@@ -132,13 +129,12 @@ const ScoreInput = ({teamDetails, handleSubmit}) => {
                     ref={(el) => (inputRefs.current[cat] = { ...inputRefs.current[cat], Speaker2: el })}
                     onChange={(e) => handleScoreChange(cat, 'Speaker2', e.target.value)}
                     value={scores[cat]?.Speaker2}
-                    required
-                  />
+                    required/>
                 </td>
               </tr>
             ))}
           </tbody>
-            </table>
+      </table>
         </div>
         <div className='score-input-submit'> <button onClick={handleData}>Submit</button></div>
     </div>

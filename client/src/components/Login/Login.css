@@ -118,7 +118,7 @@ body{
 
 }
 
-span label{
+span button{
     padding: 5px 50px;
     font-size: 18px;
     background-color: rgb(5, 20, 80);
@@ -129,7 +129,7 @@ span label{
     /* border: 2px solid black; */
 }
 
-span label:hover{
+span button:hover{
     opacity: .9;
 }
 
@@ -185,7 +185,7 @@ span label:hover{
         font-size: 3vw;
           
     }
-    span label{
+    span button{
         padding: 1vw 3vw;
         font-size: 2vw;
         background-color: rgb(5, 20, 80);

@@ -21,7 +21,7 @@ const Top8 = (props) => {
         <div  className={`card-con ${isVisible ? 'show' : ''}`}>
             <div className={`card ${isVisible ? 'show' : ''}`}>
                 <div className={`card-img ${isVisible ? 'show' : ''}`}>
-                    <img src="img/rect.svg" alt="" />
+                    <img src="/img/rect.svg" alt="" />
                 </div>
                 <div className={`card-header ${isVisible ? 'show' : ''}`}>
                     <div className='team-code'>{teamCode}</div>

@@ -22,19 +22,19 @@ const ScoreTable = (props) => {
     <div>
       <div className='container'>
         <div>
-            {data ? <table>
+            {data ?
+                <table>
                     <thead>
                         <tr>
-                            <th>Sno.</th>
-                            <th>TeamName</th>
-                            <th>Speaker1</th>
-                            <th>Speaker2</th>
-                            <th>Average</th>
+                          <th>Sno.</th>
+                          <th>TeamName</th>
+                          <th>Speaker1</th>
+                          <th>Speaker2</th>
+                          <th>Average</th>
                         </tr>
                     </thead>
                     <tbody>
-                     {
-                      data!=null &&
+                     {data!=null &&
                       data.map((item,index)=>{
                         return(
                           <tr>
@@ -43,15 +43,10 @@ const ScoreTable = (props) => {
                             <td>{item.Speaker1}</td>
                             <td>{item.Speaker2}</td>
                             <td>{item.Average}</td>
-                          </tr>
-                        )
-                      })
-                     }  
+                          </tr>)})}  
                     </tbody>
                 </table> : ""}
-                
-          
-        </div>
+              </div>
       </div>
     </div>
   )

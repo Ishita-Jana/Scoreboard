@@ -33,8 +33,8 @@ const JudgeEmailTable = (judgeName, round, courtRoom, teamCode, scores, total) =
                     </tr>
                 </thead>
                 <tbody>
-                    ${Object.keys(scores).map((key, index) => {
-                        return `
+                    ${Object.keys(scores).map((key,index)=>{
+                        return`
                             <tr key="${index}">
                                 <td>${key}</td>
                                 <td>${scores[key].Speaker1}</td>
