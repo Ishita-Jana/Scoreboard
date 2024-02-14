@@ -201,24 +201,24 @@ const Admin = (props) => {
       
       <div>
         <div className={`${prelimshow ? "":"dont-show"} prelim-score` }  >
-        <div ><button onClick={handlePrelimPrint}>Print</button></div>
+        <div className='print'><button  onClick={handlePrelimPrint}>Print</button></div>
           <PrelimsScoreBoard scores={scores} ref={prelimRef} />
         </div>
         <div className={`${judgeshow ? "":"dont-show"}  judge-score`} >
-        <div ><button onClick={handleJudgePrint}>Print</button></div>
+        <div className='print'><button  onClick={handleJudgePrint}>Print</button></div>
           <JudgeScoreTable ref={judgeRef} scores={judgeScore} />
         </div>
         {
           currentRound && currentRound !=0 && 
           <div className={`${quarterAllshow ? "":"dont-show"} quarter-score` }  >
-          <div ><button onClick={handleQuarterPrint}>Print</button></div>
+          <div className='print' ><button  onClick={handleQuarterPrint}>Print</button></div>
             <PrelimsScoreBoard scores={quarterScores} ref={quarterRef} />
           </div>
         }
         {
           currentRound && currentRound !=0 && 
           <div className={`${quarterJudgeshow ? "":"dont-show"} quarter-judge-score`} >
-          <div ><button onClick={handleQuarterJudgePrint}>Print</button></div>
+          <div  className='print'><button  onClick={handleQuarterJudgePrint}>Print</button></div>
             <JudgeScoreTable ref={quarterJRef} scores={quarterJudgeScore} />
           </div>
         }

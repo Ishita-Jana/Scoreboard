@@ -36,7 +36,7 @@ const LoginPage = (props) => {
             // console.log('Please fill in all fields');
             return;
           }
-          console.log(loginData.username, loginData.password);
+          // console.log(loginData.username, loginData.password);
         //   console.log(auth);
           const response = await loginUser(loginData);
           // console.log(response);
