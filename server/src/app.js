@@ -14,6 +14,10 @@ const bodyParser = require('body-parser');
 app.use(express.json());
 app.use(cors({
     origin: process.env.BASE_URL,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,  // Enable credentials (cookies, authorization headers, etc.)
+    optionsSuccessStatus: 204,  // Respond with 204 No Content for preflight requests
+    allowedHeaders: 'Content-Type,Authorization',
 }));
 
 app.use(session({
