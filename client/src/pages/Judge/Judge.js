@@ -101,14 +101,15 @@ const Judge = (props) => {
         // console.log(response);
       }
       if(currentRound !== 0){
-        console.log("submitting pairdata data");
-        console.log(data);
+        // console.log("submitting pairdata data");
+        // console.log(data);
         submitPairMatchesData(data);
         // console.log(response);
       }
 
 
      const total = getSpeakerTotal(teamScore);
+    //  console.log(total);
      const response = JudgeEmailTable(judgeName,currentRound,courtRoom,teamCode,teamScore,total);
      const je =judgeEmail.trim();
     //  console.log(response);
