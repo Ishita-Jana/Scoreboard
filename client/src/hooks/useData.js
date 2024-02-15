@@ -8,43 +8,43 @@ const useData = () => {
 
 
 
-    const adminLogin= useCallback(async (username, password) => {
-        const response = await httpAdminLogin(username, password);
-        if(response.ok){
-            return {
-                token: response.token,
-                ok: true,
-                message: "Admin Login Successful"
-            }
-        }
-    },[]);
+    // const adminLogin= useCallback(async (username, password) => {
+    //     const response = await httpAdminLogin(username, password);
+    //     if(response.ok){
+    //         return {
+    //             token: response.token,
+    //             ok: true,
+    //             message: "Admin Login Successful"
+    //         }
+    //     }
+    // },[]);
 
-    const judgeLogin = useCallback(async (username, password) => { 
-        const response = await httpJudgeLogin(username, password);
-        if(response.ok){
-            return {
-                ok: true,
-                message: "Judge Login Successful"
-            }
-        }
-    },[]);
+    // const judgeLogin = useCallback(async (username, password) => { 
+    //     const response = await httpJudgeLogin(username, password);
+    //     if(response.ok){
+    //         return {
+    //             ok: true,
+    //             message: "Judge Login Successful"
+    //         }
+    //     }
+    // },[]);
 
-    const judgeRegister = useCallback(async (username, password) => {
-        const response = await httpJudgeRegister(username, password);
-        if(response.ok){
-            return {
-                ok: true,
-                message: "Judge Registration Successful"
-            }
-        }
-    },[]);
+    // const judgeRegister = useCallback(async (username, password) => {
+    //     const response = await httpJudgeRegister(username, password);
+    //     if(response.ok){
+    //         return {
+    //             ok: true,
+    //             message: "Judge Registration Successful"
+    //         }
+    //     }
+    // },[]);
 
 
    
     const loginUser = useCallback(async (data) => {
         // console.log("inside login")
         const response = await httpLogin(data);
-        if(response.ok){
+        if(response && response.ok){
             return {
                 role : response.role,
                 token: response.token,
@@ -53,6 +53,19 @@ const useData = () => {
             }
         }
     })
+
+    // const userLogin = useCallback(async(data)=>{
+    //     const response = await httpLogin(data);{
+    //         if(response.ok){
+    //             return {
+    //                 role: response.role,
+    //                 token: response.token,
+    //                 ok: true,
+    //                 message: "Login Successful"
+    //             }
+    //         }
+    //     }
+    // })
 
 
     const getCurrentAdminSettings = useCallback(async () => {
@@ -113,9 +126,7 @@ const useData = () => {
     judgeNumber,
     allData,
     loginUser,
-    adminLogin,
-    judgeLogin,
-    judgeRegister,
+    // userLogin,
     getAllData,
     setCurrentAdminSettings,
     getCurrentAdminSettings,

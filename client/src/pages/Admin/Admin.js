@@ -23,9 +23,16 @@ const categories = [
   "Response to Forum questions",
 ];
 
+const rounds = [
+  'Preliminary Round',
+  'Quater Finals',
+  'Semi Final',
+  'Final'
+];
+
 const Admin = (props) => {
 
-  const {currentRound, judgeNumber,getAllData, getCurrentAdminSettings,setCurrentAdminSettings, prelimData, pairMatchesData, getPrelimdata, getPairMatchesData,getAllPrelimdata,getCurrPairMatchesData} = props;
+  const {currentRound, setCurrentAdminSettings,getAllPrelimdata,getCurrPairMatchesData} = props;
   const { modalIsOpen, openModal, closeModal, modalMessage, hideButton, setModal } = useModal();
   const [prelimshow, setPrelimshow] = useState(false);
   const [judgeshow, setJudgeshow] = useState(false);
@@ -44,6 +51,10 @@ const Admin = (props) => {
   const prelimRef = useRef();
   const quarterRef = useRef();
   const quarterJRef = useRef();
+  // const semiRef = useRef();
+  // const semiJRef = useRef();
+  // const finalRef = useRef();
+  // const finalJRef = useRef();
   const navigate = useNavigate();
 
   const handleAllData = () => {
@@ -101,7 +112,7 @@ const Admin = (props) => {
     navigate('/admin/top');
   }
 
-
+  
   
   const handleJudgePrint = useReactToPrint({content: () => judgeRef.current,});
   const handlePrelimPrint = useReactToPrint({content: () => prelimRef.current,});
@@ -110,16 +121,7 @@ const Admin = (props) => {
 
   
 
-  // useEffect(()=>{
-  //   // console.log(prelimData, pairMatchesData);
-  //   getAllData();
-  //   getCurrentAdminSettings();
-  //   getPairMatchesData();
-  //   console.log(prelimData, pairMatchesData,"prelimData and pairMatchesData in admin");
 
-
-  // },[prelimData, pairMatchesData, getPrelimdata, getPairMatchesData])
-  
 
 
   useEffect(()=>{
@@ -148,11 +150,13 @@ const Admin = (props) => {
   return (
     <div className='admin-page-container-style'>
       <TitleBar title="Admin" />
+      <div className='admin-current-round'>
+        <div className='admin-round'>{rounds[currentRound]}</div></div>
       <div className='admin-input'>
         <div className='inputs-admin'>
           <div className='round-input'>
               <select name='round' onChange={handleChange} value={data.round}>
-                  <option value="0">Prelimis</option>
+                  <option value="0">Prelim</option>
                   <option value="1">Quarters</option>
                   <option value="2">Semi-Final</option>
                   <option value="3">Final</option>
@@ -180,7 +184,7 @@ const Admin = (props) => {
            
               <div className='cat-details'>
               { categories.slice(5,10).map((cat,index)=>{
-              return <p className='cat' key={index}>{`C${index+1}:  `}{cat}</p>
+              return <p className='cat' key={index}>{`C${index+6}:  `}{cat}</p>
             }) } 
             </div>
         </div>
@@ -209,19 +213,21 @@ const Admin = (props) => {
           <JudgeScoreTable ref={judgeRef} scores={judgeScore} />
         </div>
         {
-          currentRound && currentRound !=0 && 
+          currentRound && (currentRound ==1 || currentRound ==2 || currentRound==3) && 
           <div className={`${quarterAllshow ? "":"dont-show"} quarter-score` }  >
           <div className='print' ><button  onClick={handleQuarterPrint}>Print</button></div>
             <PrelimsScoreBoard scores={quarterScores} ref={quarterRef} />
           </div>
         }
         {
-          currentRound && currentRound !=0 && 
+          currentRound && (currentRound ==1 || currentRound ==2 || currentRound==3) && 
           <div className={`${quarterJudgeshow ? "":"dont-show"} quarter-judge-score`} >
           <div  className='print'><button  onClick={handleQuarterJudgePrint}>Print</button></div>
             <JudgeScoreTable ref={quarterJRef} scores={quarterJudgeScore} />
           </div>
         }
+          
+        
       </div>
       
 

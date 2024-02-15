@@ -3,6 +3,7 @@ import Login from '../../components/Login/Login'
 import useAuth from '../../hooks/useAuth';
 import {useNavigate } from 'react-router-dom';
 import useModal from '../../components/Modal/useModal.js';
+import useData from '../../hooks/useData.js'
 import './LoginPage.css'
 import Modal from 'react-modal';
 
@@ -11,7 +12,8 @@ const LoginPage = (props) => {
 
     const { modalIsOpen, openModal, closeModal, modalMessage, hideButton} = useModal();
     const {auth,setAuth} = useAuth();
-    const {loginUser} = props;
+    const {loginUser} = useData();
+    // const {loginUser} = props;
    
     const navigate = useNavigate(); 
     const [loginData, setLoginData] = useState({
@@ -30,15 +32,18 @@ const LoginPage = (props) => {
       const onSubmit= async()=>{
 
         try {
-        if(loginData.username==='' || loginData.password===''){
-            // alert('Please fill in all fields');
+
+        if(loginData.username ==='' || loginData.password ===''){
+           
             openModal('Please fill in all fields');
             // console.log('Please fill in all fields');
             return;
           }
           // console.log(loginData.username, loginData.password);
-        //   console.log(auth);
+          // console.log(auth);
           const response = await loginUser(loginData);
+          // const res = await userLogin(loginData);
+          // console.log(res); 
           // console.log(response);
           if(!response){
             openModal('Username or password not correct');

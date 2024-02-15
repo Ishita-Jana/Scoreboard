@@ -1,6 +1,6 @@
 .judge-score-table{
     display: flex;
-    width: fit-content;
+    width: 100%;
     flex-wrap: wrap;
     justify-content: space-around;
     /* border: 5px solid #0a5a90; */

@@ -1,5 +1,6 @@
 import React, { useState, useEffect,useRef } from 'react';
 import './ScoreInput.css'
+import useModal from '../Modal/useModal.js';
 
 
 const ScoreInput = ({teamDetails, handleSubmit}) => {
@@ -18,6 +19,7 @@ const ScoreInput = ({teamDetails, handleSubmit}) => {
   ];
 
   const shortCat = ["c1","c2","c3","c4","c5","c6","c7","c8","c9","c10"]
+  const { modalIsOpen, openModal, closeModal, modalMessage, hideButton, setModal } = useModal();
   const [scores, setScores] = useState(() => {
     const initialScores = {};
 
@@ -78,6 +80,7 @@ const ScoreInput = ({teamDetails, handleSubmit}) => {
 
     // If all scores are filled, submit the data
     if (Object.keys(errors).length === 0) {
+      openModal('Scores submitted successfully!');
       handleSubmit(scores);
     } 
     

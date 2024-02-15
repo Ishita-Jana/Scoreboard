@@ -22,19 +22,12 @@
     animation: rotateZAxis 5s linear infinite;
 }
 
-/* @keyframes rotateZAxis {
-    0% {
-        transform: rotateY(0deg); 
-    }
-    25% {
-        transform: rotateY(180deg); 
-    }
-
-    70% {
-        transform: rotateY(-180deg); 
-    }
-    100% {
-        transform: rotateY(0deg); 
-    }
-} */
+.loading-top8{
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    color: aliceblue;
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+}
 

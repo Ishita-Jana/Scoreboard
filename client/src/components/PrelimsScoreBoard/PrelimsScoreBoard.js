@@ -16,13 +16,15 @@ export const PrelimsScoreBoard = React.forwardRef((props, ref) => {
 
 
     useEffect(()=>{
-        // console.log(scores);
+        console.log(scores);
         if(scores){
-            // console.log(scores);
+            console.log("seting data");
             setData(scores);
-            if(scores[0] && scores[0].round){
-                setRound(scores[0].round);
+            if(scores[0]){
+                console.log(scores[0].round);
+                setRound(rounds[scores[0].round]);
             }
+           
             
         }
        
@@ -31,17 +33,17 @@ export const PrelimsScoreBoard = React.forwardRef((props, ref) => {
     
     return (
         <div ref={ref} className='prelims-score-table'>
-            {scores  ? <table border={1}>
+            {scores  ? <table  border={1}>
             <thead>
               <tr key={0}>
-                <th colSpan={24}>{rounds[round]}</th>
+                <th className='table-head-text' colSpan={24}>{round}</th>
               </tr>
               <tr key={1}>
                 <th>Teams</th>
                 <th>Speakers</th>
                 <th>Judges</th>
                 <th colSpan={10}>Categories</th>
-                <th>Total</th>
+                <th className='total-edit'>Total</th>
               </tr>
               <tr>
                 <th></th>
@@ -64,19 +66,19 @@ export const PrelimsScoreBoard = React.forwardRef((props, ref) => {
                 return (
                 <React.Fragment key={index}>
                     <tr>
-                        <td rowSpan={4}>{team.teamCode}</td>
+                    <td className='text-edit' rowSpan={4}>{team.teamCode}</td>
                         <td rowSpan={2}>Speaker1</td>
                         <td>{team.judgeScore[0].judgeName}</td>
                         {<React.Fragment>
                                 {categories.map((category,index)=>{
                                     return(
                                         <React.Fragment key={index}>
-                                            <td>{team.judgeScore[0].scores[category].Speaker1}</td>
+                                            <td >{team.judgeScore[0].scores[category].Speaker1}</td>
                                         </React.Fragment>
                                     )
                                 })}
                             </React.Fragment>}
-                        <td rowSpan={2}>{team.speakerTotal.Speaker1}</td>
+                        <td className='totalS1-edit' rowSpan={2}>{team.speakerTotal.Speaker1}</td>
                     </tr>
                     <tr>   
                         <td>{team.judgeScore[1].judgeName}</td>
@@ -102,7 +104,7 @@ export const PrelimsScoreBoard = React.forwardRef((props, ref) => {
                                 )
                             })}
                             </React.Fragment>
-                            <td rowSpan={2}>{team.speakerTotal.Speaker2}</td>
+                            <td className='totalS2-edit' rowSpan={2}>{team.speakerTotal.Speaker2}</td>
                     </tr>
                     <tr>
                         <td>{team.judgeScore[1].judgeName}</td>

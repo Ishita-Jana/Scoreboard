@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './Login.css'
 
 const Login = (props) => {
@@ -15,11 +15,20 @@ const Login = (props) => {
         onSubmit();
     }
 
-    document.body.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          onSubmit();
-        }
-      });
+   
+  useEffect(() => {
+      const handleKeyPress = (e) => {
+          if (e.key === 'Enter') {
+              onSubmit();
+          }
+      };
+
+      document.body.addEventListener('keypress', handleKeyPress);
+
+      return () => {
+          document.body.removeEventListener('keypress', handleKeyPress);
+      };
+  }, [onSubmit]);
 
 
   return (

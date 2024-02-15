@@ -27,7 +27,7 @@ const Judge = (props) => {
   const [judgeName, setJudgeName] = useState('');
   const [judgeEmail, setJudgeEmail] = useState('');
   const [teamDetails, setTeamDetails] = useState(null);
-  const { modalIsOpen, openModal, closeModal, modalMessage, hideButton, setModal } = useModal();
+  const { modalIsOpen, openModal, closeModal, modalMessage, hideButton,hideModalButton, setModal } = useModal();
 
   
   
@@ -46,8 +46,8 @@ const Judge = (props) => {
     }
 
     const courtRoomNumber = parseInt(courtRoom, 10);
-    if (isNaN(courtRoomNumber) || courtRoomNumber < 1 || courtRoomNumber > 14) {
-      openModal('Please enter a valid number between 1 and 14 for Court Room.');
+    if (isNaN(courtRoomNumber) || courtRoomNumber < 1 || courtRoomNumber > 250) {
+      openModal('Please enter a courtRoom number between 1 and 250 for Court Room.');
       return;
     }
 
@@ -75,6 +75,9 @@ const Judge = (props) => {
   //-------handle submit of data----------
   const handleSubmit = async(teamScore)=>{
 
+    hideModalButton(true);
+    openModal('Updating scores......');
+    console.log(teamScore);
     const formattedTeamCode = `TC-${teamCode}`;
     const formattedCourtRoom = `CR-${courtRoom}`;
       const data = {
@@ -98,9 +101,10 @@ const Judge = (props) => {
         // console.log(response);
       }
       if(currentRound !== 0){
-        // console.log("submitting pairdata data");
-        // console.log(data);
+        console.log("submitting pairdata data");
+        console.log(data);
         submitPairMatchesData(data);
+        // console.log(response);
       }
 
 
@@ -118,13 +122,14 @@ const Judge = (props) => {
      const resp = await httpSendEmail(r)
     //  console.log(resp);
     if(resp.ok){
+      hideModalButton(false);
       openModal('Email sent successfully');
-      window.location.reload();
+      // window.location.reload();
       
     }
     if(!resp.ok){
-      openModal('Error in sending email');
-      window.location.reload();
+      openModal('Error in sending email.');
+      // window.location.reload();
     }
       
   

@@ -127,6 +127,10 @@
 }
 
   
-  
+  .content-judge button:hover{
+    background: #878c97;
+    cursor: pointer;
+    color: #0830A6;
+  }
 
 

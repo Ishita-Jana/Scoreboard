@@ -209,6 +209,9 @@ const JudgeEmailTable =(judgeName, round, courtRoom, teamCode, scores,total)=>{
     'Final'
 ]
 
+
+const formattedJudgeName = judgeName.trim().toUpperCase();
+console.log(formattedJudgeName);
 const categories = [
   "Appreciation and application of facts",
   "Application of legal principles",
@@ -226,7 +229,7 @@ const categories = [
       <table border="1" className="judge-table">
           <thead>
               <tr>
-                  <th colSpan="3">${judgeName}</th>
+                  <th colSpan="3">${formattedJudgeName}</th>
               </tr>
               <tr>
                   <th colSpan='3'>${rounds[round]}</th>

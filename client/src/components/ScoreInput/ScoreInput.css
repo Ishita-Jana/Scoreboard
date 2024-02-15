@@ -4,7 +4,10 @@
 .score-table-container{
     width: auto;
 }
-
+.cat-score-judge td,th{
+    border: none;
+    /* border-collapse: collapse; */
+}
 
 
 .score-input-container input{
@@ -45,6 +48,13 @@ tbody td{
     border: none;
     color: aliceblue;
     
+}
+
+.score-input-submit button:hover{
+    background: #d8d9db;
+    cursor: pointer;
+    color: #0830A6;
+
 }
 
 .team-heading{

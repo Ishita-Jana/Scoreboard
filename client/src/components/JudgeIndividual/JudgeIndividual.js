@@ -1,5 +1,6 @@
 import React from 'react'
 import '../JudgeScoreTable/JudgeScore.css';
+import './JudgeIndividual.css';
 
 const rounds = [
     'Preliminary Round',
@@ -10,38 +11,36 @@ const rounds = [
 const JudgeIndividual = (props) => {
 
     const {judgeName,teamCode,scores,round,courtRoom,total} = props;
+    let fj = judgeName.charAt(0).toUpperCase() + judgeName.slice(1);
 
   return (
         <>
         {scores ?
-        <div >
+        <div className='j-table-con'>
 <table border={1} className='judge-table'>
            <thead>
                <tr>
-                <th></th>
-                <th colSpan={2}>{judgeName}</th>
+                <th colSpan={3}>{fj}</th>
+               </tr>
+               <tr>
+                <th colSpan={3}>{rounds[round]}</th>
+               </tr>
+               <tr>
+                <th colSpan={3}>Court Room : {courtRoom}</th>
+               </tr>
+               <tr>
+                <th colSpan={3}>Team Code: {teamCode}</th>
                </tr>
                <tr>
                 <th></th>
-                <th colSpan={2}>{rounds[round]}</th>
+                <th colSpan={2}>Marks</th> 
                </tr>
                <tr>
-                <th></th>
-                <th colSpan={2}>{courtRoom}</th>
-               </tr>
-               <tr>
-                <th></th>
-                <th colSpan={2}>{teamCode}</th>
-               </tr>
-               <tr>
-                <th></th>
+               <th>Categories</th>
                 <th>Speaker1</th>
                 <th>Speaker2</th>
                </tr>
-               <tr>
-                <th>Categories</th>
-                <th colSpan={2}>Marks</th> 
-               </tr>
+               
            </thead>
            <tbody>
                <React.Fragment>
@@ -54,7 +53,7 @@ const JudgeIndividual = (props) => {
                 </tr>)
                })}
                </React.Fragment>
-               <tr className='total-score-table'>
+               <tr className='t-judge'>
                 <td>Total</td>
                 <td>{total.Speaker1}</td>
                 <td>{total.Speaker2}</td>

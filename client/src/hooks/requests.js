@@ -6,22 +6,6 @@ const API_URL = "https://mcc-scoreboard.onrender.com";
 
 
 
-async function httpAdminLogin({username, password}){
-    const response = await fetch(`${API_URL}/adminLogin`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({username, password})
-    });
-    const data = await response.json();
-    return {
-        token: data.token,
-        judgeNumber: data.judgeNumber
-    }
-    
-}
-
 async function httpLogin(data){
     // console.log(data);
     const response = await fetch(`${API_URL}/login`, {
@@ -37,22 +21,7 @@ async function httpLogin(data){
 
 }
 
-async function httpJudgeLogin({username, password}){
-    const response = await fetch(`${API_URL}/judgeLogin`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({username, password})
-    });
-   
-}
 
-async function httpJudgeRegister({username, password}){
-    //TODO
-   
-  
-}
 
 async function httpGetAdminSettings(){
     const response = await fetch(`${API_URL}/adminSettings`);
@@ -129,6 +98,8 @@ async function httpUpdatePrelimData(data){
     //TODO
     //update TeamCode with the average score and speaker1 and speaker2
 }
+
+
 async function httpGetPairMatchesData(){
     const pairMatchesData = await fetch(`${API_URL}/pairMatches`)
     const data = await pairMatchesData.json();
@@ -212,9 +183,6 @@ async function httpSendEmail(data){
 
 
 export {
-    httpAdminLogin,
-    httpJudgeRegister,
-    httpJudgeLogin, 
     httpGetAdminSettings,
     httpSetAdminSettings,
     httpGetPrelimData,

@@ -69,11 +69,14 @@ const TopScorer = (props) => {
             <video className="video" src="/video/bg.mp4" autoPlay muted loop />
             <div className="overlay"></div>
             <div className='top8-container'>
+                {!top8 && <div className='loading-top8'>Loading data....... <br/> Do not press Enter</div>}
                 {teams.length >0  && teams.map((team, index) => {
                     return (
                         <React.Fragment key={index}>
-                        {/* {console.log(team)} */}
-                        <Top8 key={index} teamCode={team.teamCode}  total={team.Total} />
+                        {team.teamCode &&  <Top8 key={index} teamCode={team.teamCode}  total={team.Total} />}
+                       
+
+                        
                         </React.Fragment>
                         
                     );

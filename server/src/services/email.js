@@ -5,6 +5,7 @@ const emailRouter = express.Router();
 
 const EMAIL_ADDR = process.env.EMAIL_ADDR;
 const EMAIL_PASS = process.env.EMAIL_PASS;
+// console.log(EMAIL_ADDR, EMAIL_PASS, "email data");
 
 
 async function sendEmail(to, subject, text, html) {

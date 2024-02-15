@@ -28,7 +28,7 @@ const ROLES ={
 
 const AppLayout = () => {
 
-const {currentRound,judgeNumber,adminLogin,judgeLogin,judgeRegister,getCurrentAdminSettings,setCurrentAdminSettings, getAllData,allData,loginUser} = useData();
+const {currentRound,judgeNumber,getCurrentAdminSettings,setCurrentAdminSettings, getAllData,allData,loginUser} = useData();
 const {currRoundPairs,pairMatchesData,getPairMatchesData,submitPairMatchesData,getCurrPairMatchesData} = usePairMatchesData();
 const {prelimData,getPrelimdata,getPrelimAverage,submitPrelimData,getAllPrelimdata} = usePrelimsData();
 

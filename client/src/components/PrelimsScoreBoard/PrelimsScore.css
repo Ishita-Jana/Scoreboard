@@ -4,13 +4,58 @@
     flex-wrap: wrap;
     justify-content: space-around;
     page-break-before: always;
+    overflow-x: auto;
+    
+    
+
     
     
 }
 
+.prelims-score-table table{
+    border-collapse: collapse;
+    background-color: rgb(255, 255, 255);
+    margin: 0px 20px;
+    box-shadow: 0px 3.290045738220215px 3.290045738220215px rgba(0, 0, 0, 0.25);
+    border: none;
+}
+
+
 .prelims-score-table th, td{
-    padding: 5px 20px;
+    padding: 5px 10px;
+    border-bottom: 1px solid #7f7373;
+    border-right: 1px solid #7a7c75;
 }
 .cat-table{
     padding: 10px 20px;
+}
+
+.table-head-text{
+    font-size: 20px;
+    color: brown;
+}
+
+.text-edit{
+    font-size: 17px;
+    color: rgb(38, 32, 32);
+    text-align: center;
+    font-weight: 900;
+    padding: 0px 15px;
+}
+
+.total-edit{
+    background-color: #8f1717;
+    color: aliceblue;
+    
+}
+
+.totalS1-edit{
+    background-color: beige;
+    
+
+}
+.totalS2-edit{
+    background-color: rgb(192, 196, 192,0.5);
+    
+
 }

@@ -14,6 +14,10 @@ const useModal = () => {
     const closeModal = () => {
       setModalIsOpen(false);
     }
+
+    const hideModalButton = (par)=>{
+      setHideButton(par);
+    }
   
     const setModal = () => {
       // Set submit message
@@ -42,6 +46,7 @@ const useModal = () => {
       modalMessage,
       hideButton,
       setModal,
+      hideModalButton
     };
 }
 
