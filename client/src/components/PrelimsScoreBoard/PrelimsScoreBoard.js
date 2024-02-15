@@ -18,8 +18,12 @@ export const PrelimsScoreBoard = React.forwardRef((props, ref) => {
     useEffect(()=>{
         // console.log(scores);
         if(scores){
+            // console.log(scores);
             setData(scores);
-            setRound(scores[0].round);
+            if(scores[0] && scores[0].round){
+                setRound(scores[0].round);
+            }
+            
         }
        
      
@@ -27,7 +31,7 @@ export const PrelimsScoreBoard = React.forwardRef((props, ref) => {
     
     return (
         <div ref={ref} className='prelims-score-table'>
-            {scores ? <table border={1}>
+            {scores  ? <table border={1}>
             <thead>
               <tr key={0}>
                 <th colSpan={24}>{rounds[round]}</th>

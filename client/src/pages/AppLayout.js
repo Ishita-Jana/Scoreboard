@@ -40,13 +40,13 @@ const {prelimData,getPrelimdata,getPrelimAverage,submitPrelimData,getAllPrelimda
         <Route path="/" element={<Home currentRound={currentRound} judgeNumber={judgeNumber} prelimData={prelimData} currRoundPairs={currRoundPairs} pairMatchesData={pairMatchesData} getPairMatchesData={getPairMatchesData} getCurrPairMatchesData={getCurrPairMatchesData} getPrelimdata={getPrelimdata} getPrelimAverage={getPrelimAverage}  />} />
         
         <Route path="/login" element={<LoginPage  loginUser={loginUser} />} />
-        <Route path="/top" element={<TopScorer getPrelimdata={getPrelimdata} />} />
+        {/* <Route path="/top" element={<TopScorer getPrelimdata={getPrelimdata} />} /> */}
 
 
         {/*---------- private routes------------------*/}
         <Route path='/admin'  element={<PrivateRoute allowedRole={ROLES.admin} />}  >
               <Route path="dashboard" element={<Admin currentRound={currentRound} judgeNumber={judgeNumber} allData={allData} getAllData={getAllData} getCurrentAdminSettings={getCurrentAdminSettings} setCurrentAdminSettings={setCurrentAdminSettings} prelimData={prelimData} pairMatchesData={pairMatchesData} getPrelimdata={getPrelimdata} getAllPrelimdata={getAllPrelimdata} getPairMatchesData={getPairMatchesData} getCurrPairMatchesData={getCurrPairMatchesData} />} />
-              {/* <Route path="top8" element={<Top8 getPrelimdata={getPrelimdata} />} /> */}
+              <Route path="top" element={<TopScorer getPrelimdata={getPrelimdata} />} />
         </Route>
 
         <Route  path='/judge' element={<PrivateRoute allowedRole={ROLES.judge} />} >

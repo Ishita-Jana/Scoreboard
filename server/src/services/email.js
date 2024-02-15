@@ -8,7 +8,7 @@ const EMAIL_PASS = process.env.EMAIL_PASS;
 
 
 async function sendEmail(to, subject, text, html) {
-    
+    // console.log(EMAIL_ADDR, EMAIL_PASS, "email data");
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -27,6 +27,7 @@ async function sendEmail(to, subject, text, html) {
     };
 
     try {
+        // console.log()
         const p = await transporter.sendMail(mailOptions);
         return p.response;
         
@@ -39,6 +40,7 @@ async function sendEmail(to, subject, text, html) {
 
 emailRouter.post('/sendEmail', async (req, res) => {
     const { to, subject, text, html } = req.body;
+    // console.log(to, subject, text, html, "email data");
     const c =await sendEmail(to, subject, text, html);
     if(c){
         return res.status(200).json({ ok: true, message: 'Email sent successfully.' });

@@ -98,7 +98,7 @@ const Admin = (props) => {
   }
 
   const handleNavigate=()=>{
-    navigate('/top')
+    navigate('/admin/top');
   }
 
 
