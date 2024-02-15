@@ -125,12 +125,12 @@ const Judge = (props) => {
     if(resp.ok){
       hideModalButton(false);
       openModal('Email sent successfully');
-      // window.location.reload();
+      window.location.reload();
       
     }
     if(!resp.ok){
       openModal('Error in sending email.');
-      // window.location.reload();
+      window.location.reload();
     }
       
   
